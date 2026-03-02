@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+
+  <!-- Primary Meta Tags -->
+  <title>In-Call AI — AI-участник вашей встречи | Mymeet.ai</title>
+  <meta name="description" content="Бот Mymeet.ai приходит на встречу как участник. Задайте ему вопрос вслух — он знает всё о вашей компании и предыдущих встречах. Назначит следующую встречу прямо из звонка.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://sales.mymeet.ai/in-call-assistant">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="In-Call AI — AI-участник вашей встречи от Mymeet.ai">
+  <meta property="og:description" content="Обращайтесь к AI прямо на звонке: он ответит на вопросы о компании, найдёт документы и назначит следующую встречу.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sales.mymeet.ai/in-call-assistant">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="In-Call AI — AI-участник вашего звонка">
+  <meta name="twitter:description" content="Знает компанию, отвечает на вопросы, назначает встречи прямо из звонка">
+  <meta name="twitter:url" content="https://sales.mymeet.ai/in-call-assistant">
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <!-- Critical CSS (first screen: header + hero + CTA) -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--color-primary:#3B82F6;--color-primary-dark:#2563EB;--color-primary-light:#60A5FA;--color-secondary:#10B981;--color-accent:#F59E0B;--color-bg:#fff;--color-bg-alt:#F8FAFC;--color-bg-dark:#0F172A;--color-text:#0F172A;--color-text-muted:#64748B;--color-border:#E2E8F0;--shadow-sm:0 1px 2px rgba(0,0,0,.04);--shadow-md:0 4px 16px rgba(0,0,0,.06);--shadow-lg:0 12px 40px rgba(0,0,0,.08);--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-full:9999px}
+    html{scroll-behavior:smooth}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Oxygen","Ubuntu","Cantarell","Helvetica Neue",Arial,sans-serif;line-height:1.7;color:var(--color-text);background:var(--color-bg);-webkit-font-smoothing:antialiased}
+    img{max-width:100%;height:auto;display:block}
+    .container{width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+    header{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(226,232,240,.6)}
+    .header-inner{display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:1.125rem;font-weight:700;color:var(--color-text);text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:-.02em}
+    .logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px}
+    .logo-text span{color:var(--color-text-muted);font-weight:500}
+    nav{display:flex;align-items:center;gap:24px}
+    nav a{color:var(--color-text-muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+    nav a:hover{color:var(--color-text)}
+    .nav-cta{background:var(--color-text);color:#fff !important;padding:10px 20px;border-radius:var(--radius-full);font-weight:600}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border-radius:var(--radius-full);font-weight:600;font-size:.9375rem;text-decoration:none;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s}
+    .btn-gradient{background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));color:#fff}
+    .btn-gradient:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,.3)}
+    .btn-secondary{background:#fff;color:var(--color-text);border:1px solid var(--color-border)}
+    .btn-secondary:hover{background:var(--color-bg-alt)}
+    .hero{padding:140px 0 80px;text-align:center;background:linear-gradient(180deg,var(--color-bg-alt),var(--color-bg))}
+    .hero-badge{display:inline-block;background:rgba(59,130,246,.1);color:var(--color-primary);padding:8px 16px;border-radius:var(--radius-full);font-size:.875rem;font-weight:600;margin-bottom:24px}
+    .hero h1{font-size:clamp(2.25rem,5vw,3.25rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px}
+    .hero h1 .gradient{background:linear-gradient(135deg,var(--color-primary),var(--color-primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:1.2rem;color:var(--color-text-muted);max-width:640px;margin:0 auto 36px;line-height:1.6}
+    .hero-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:40px}
+    .trust-signals{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;font-size:.875rem;color:var(--color-text-muted)}
+    .trust-item{display:flex;align-items:center;gap:6px}
+    .trust-check{width:18px;height:18px;background:var(--color-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700}
+    @media(max-width:768px){nav{display:none}.hero{padding:120px 24px 60px}}
+  </style>
+
+  <!-- Non-critical CSS (async load) -->
+  <link rel="stylesheet" href="styles/in-call-assistant.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="styles/in-call-assistant.css"></noscript>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Mymeet.ai Sales Suite — главная">
+        <span class="logo-icon" aria-hidden="true">M</span>
+        <span class="logo-text">Mymeet.ai <span>In-Call AI</span></span>
+      </a>
+      <nav aria-label="Основная навигация">
+        <a href="#features">Возможности</a>
+        <a href="#how">Как работает</a>
+        <a href="#faq">FAQ</a>
+        <a href="index.html">Sales Suite</a>
+        <a href="mailto:hello@mymeet.ai?subject=In-Call%20AI%20—%20Demo" class="nav-cta">Записаться на демо</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ════════ HERO ════════ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-badge">AI-участник встречи · Mymeet.ai</div>
+        <h1 id="hero-heading">Спроси AI прямо на звонке —<br>он <span class="gradient">знает, найдёт, сделает</span></h1>
+        <p class="hero-sub">Бот Mymeet.ai приходит на встречу как участник. Обратись к нему вслух: он ответит на вопрос о компании, найдёт нужный документ или назначит следующую встречу — прямо сейчас, не прерывая разговор.</p>
+        <div class="hero-cta">
+          <a href="mailto:hello@mymeet.ai?subject=In-Call%20AI%20—%20Demo" class="btn btn-gradient">Записаться на демо</a>
+          <a href="#how" class="btn btn-secondary">Как это работает</a>
+        </div>
+        <div class="trust-signals">
+          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span><span>Знает контекст компании</span></div>
+          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span><span>Отвечает прямо во время звонка</span></div>
+          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span><span>Назначает встречи из звонка</span></div>
+          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span><span>Zoom · Meet · Teams</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ Концепция ════════ -->
+    <section class="section concept-section" aria-labelledby="concept-heading">
+      <div class="container">
+        <div class="concept-inner">
+          <div class="concept-visual">
+            <div class="call-card">
+              <div class="call-header">
+                <div class="call-dot call-dot-red"></div>
+                <div class="call-dot call-dot-yellow"></div>
+                <div class="call-dot call-dot-green"></div>
+                <span class="call-title">Zoom Meeting · Q4 Review</span>
+              </div>
+              <div class="participants">
+                <div class="participant">
+                  <div class="participant-avatar participant-human">АК</div>
+                  <span>Алексей К.</span>
+                </div>
+                <div class="participant">
+                  <div class="participant-avatar participant-human">МП</div>
+                  <span>Мария П.</span>
+                </div>
+                <div class="participant participant-ai">
+                  <div class="participant-avatar participant-ai-avatar">AI</div>
+                  <span>Mymeet AI</span>
+                  <span class="ai-badge">участник</span>
+                </div>
+              </div>
+              <div class="chat-messages">
+                <div class="chat-msg chat-msg-human">
+                  <span class="chat-name">Алексей К.</span>
+                  <span class="chat-text">ИИ, есть кейсы для ритейла с оборотом от 500M?</span>
+                </div>
+                <div class="chat-msg chat-msg-ai">
+                  <span class="chat-name">Mymeet AI</span>
+                  <span class="chat-text">Да, есть три релевантных кейса. Лучший — X5 Retail Group: внедрили за 3 месяца, рост конверсии +22%. Выслать детали в чат?</span>
+                </div>
+                <div class="chat-msg chat-msg-human">
+                  <span class="chat-name">Алексей К.</span>
+                  <span class="chat-text">ИИ, назначь следующую встречу для всех на следующей неделе</span>
+                </div>
+                <div class="chat-msg chat-msg-ai">
+                  <span class="chat-name">Mymeet AI</span>
+                  <span class="chat-text">Проверил календари. Все свободны в среду 12 марта в 15:00. Создать встречу?</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="concept-text">
+            <div class="concept-label">Как это устроено</div>
+            <h2 id="concept-heading">Бот приходит на встречу. Его можно спросить — как коллегу</h2>
+            <p>Mymeet.ai уже записывает звонки и делает саммари. Теперь бот стал полноценным участником: у него есть контекст о вашей компании и история всех предыдущих встреч с этим клиентом.</p>
+            <p>Обратись к нему по имени вслух или в чате — он ответит, найдёт нужное или выполнит действие. Прямо сейчас, не прерывая разговор.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ Features ════════ -->
+    <section class="section section-alt" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="features-heading">Что умеет AI-участник</h2>
+          <p>Два режима работы — отвечать на вопросы и выполнять действия</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>Эксперт по вашей компании</h3>
+            <p>Загрузи документы: продуктовый FAQ, прайс, кейсы, условия партнёрства. Бот становится экспертом, который всегда на звонке.</p>
+            <ul class="feature-list">
+              <li>→ Клиент спрашивает про кейсы — бот находит подходящий за секунды</li>
+              <li>→ Технический вопрос без CTO — бот отвечает из документации</li>
+              <li>→ История предыдущих встреч с клиентом — весь контекст доступен</li>
+              <li>→ Точные условия договора — без юриста на линии</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Ассистент, который действует</h3>
+            <p>Подключи коннекторы — и бот не только отвечает, но и делает. Прямо во время звонка, без переключения контекста.</p>
+            <ul class="feature-list">
+              <li>→ «Назначь встречу» — бот проверит занятость и забронирует слот</li>
+              <li>→ «Запиши задачу» — задача попадёт в CRM с нужными полями</li>
+              <li>→ «Отправь материалы» — бот подготовит письмо с нужными файлами</li>
+              <li>→ Кастомные действия через ваши коннекторы</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ Сценарии ════════ -->
+    <section class="section" aria-labelledby="scenarios-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="scenarios-heading">Как выглядит звонок с AI-участником</h2>
+          <p>Два реальных сценария вместо абстрактных обещаний</p>
+        </div>
+
+        <div class="scenario">
+          <span class="scenario-label">Сценарий 1</span>
+          <h3>Discovery call: клиент задаёт трудные вопросы</h3>
+          <div class="scenario-step"><span class="time">05:20</span><span>Клиент: «Есть кейсы для ритейла с оборотом от 500M?» Менеджер: «ИИ, покажи кейсы для ритейла». За 5 секунд бот находит релевантный кейс и зачитывает ключевые цифры в чат.</span></div>
+          <div class="scenario-step"><span class="time">18:00</span><span>Клиент спрашивает про интеграцию с SAP. CTO не на звонке, но техническая документация загружена. Бот отвечает точно и по документу — клиент доволен.</span></div>
+          <div class="scenario-step"><span class="time">32:00</span><span>«Давайте назначим следующий звонок с техкомандой». Менеджер: «ИИ, назначь встречу для всех участников на следующей неделе». Бот проверяет календари и предлагает три слота — прямо в чате.</span></div>
+          <div class="scenario-result">Ни один вопрос не остался без ответа. Следующая встреча назначена до того, как текущий звонок завершился.</div>
+        </div>
+
+        <div class="scenario">
+          <span class="scenario-label">Сценарий 2</span>
+          <h3>Переговоры о партнёрстве: нужны точные данные</h3>
+          <div class="scenario-step"><span class="time">10:00</span><span>Партнёр спрашивает об условиях агентского договора. Менеджер обращается к боту — тот цитирует актуальные условия из документа, загруженного юристами. Никаких «уточню и напишу».</span></div>
+          <div class="scenario-step"><span class="time">22:00</span><span>«Какой был результат у похожего партнёра в первый год?» Бот находит данные из прошлых встреч с аналогичным партнёром — конкретные цифры, не «примерно».</span></div>
+          <div class="scenario-step"><span class="time">40:00</span><span>Договорились. «ИИ, создай задачу: подготовить NDA для [компания] до пятницы». Задача зафиксирована в CRM. Менеджер не потеряет ни одну договорённость.</span></div>
+          <div class="scenario-result">Договорённости зафиксированы в реальном времени. Никакого «напишу после звонка» — всё сделано прямо на встрече.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ Ценность ════════ -->
+    <section class="section section-alt" id="value" aria-labelledby="value-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="value-heading">Конкретные результаты</h2>
+          <p>Что меняется на каждом звонке</p>
+        </div>
+        <div class="value-grid">
+          <div class="value-card">
+            <div class="value-metric">0 с</div>
+            <h3>Поиск информации во время звонка</h3>
+            <p>Больше не нужно переключаться из звонка в документы. Бот находит ответ быстрее, чем ты успеваешь открыть новую вкладку.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-metric">100%</div>
+            <h3>Вопросов с ответом прямо на встрече</h3>
+            <p>«Уточню и напишу» уходит в прошлое. Если ответ есть в базе знаний — бот даст его прямо сейчас, при всех.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-metric">2 мин</div>
+            <h3>Чтобы назначить следующую встречу</h3>
+            <p>Вместо 10+ писем с «когда вам удобно?» — бот проверяет занятость всех и бронирует слот прямо из звонка.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-metric">24/7</div>
+            <h3>Эксперт, который всегда на звонке</h3>
+            <p>Юрист занят. CTO на другой встрече. Бот знает то, что знает вся команда — и доступен на каждом звонке.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ Узнаёшь себя? ════════ -->
+    <section class="section section-dark" aria-labelledby="recognize-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="recognize-heading">Узнаёшь себя?</h2>
+          <p>Ситуации, которые бот решает прямо на звонке</p>
+        </div>
+        <div class="recognize-grid">
+          <div class="recognize-col">
+            <h3>На звонке с клиентом</h3>
+            <div class="recognize-item"><span class="emoji">😰</span><span>Клиент спрашивает точные условия — ты знаешь примерно, но не уверен. Говоришь «уточню»</span></div>
+            <div class="recognize-item"><span class="emoji">😤</span><span>CTO не пришёл, клиент задаёт технические вопросы — приходится говорить «отвечу письмом»</span></div>
+            <div class="recognize-item"><span class="emoji">📅</span><span>Встреча заканчивается: «назначим следующий звонок» — и начинается переписка на два дня</span></div>
+            <div class="recognize-item"><span class="emoji">📄</span><span>Клиент просит кейс — говоришь «отправлю», хотя кейс уже есть в папке продаж</span></div>
+          </div>
+          <div class="recognize-col">
+            <h3>На переговорах о партнёрстве</h3>
+            <div class="recognize-item"><span class="emoji">🤔</span><span>Партнёр ссылается на прошлую встречу — ты не уверен, что именно тогда договорились</span></div>
+            <div class="recognize-item"><span class="emoji">😟</span><span>Просят процент от сделки — не помнишь условия из договора без юриста рядом</span></div>
+            <div class="recognize-item"><span class="emoji">📊</span><span>«Как у других ваших партнёров?» — не можешь назвать цифры без подготовки</span></div>
+            <div class="recognize-item"><span class="emoji">✅</span><span>Договорились о задаче — и через три дня вспоминаешь, что не записал правильно</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ База знаний ════════ -->
+    <section class="section" id="knowledge" aria-labelledby="knowledge-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="knowledge-heading">Что загрузить в базу знаний</h2>
+          <p>Бот знает то, что загрузила ваша команда — и историю всех ваших встреч</p>
+        </div>
+        <div class="knowledge-grid">
+          <div class="knowledge-item">
+            <div class="knowledge-icon">📋</div>
+            <h3>Продуктовая документация</h3>
+            <p>FAQ, технические спецификации, интеграции, сравнения с конкурентами. Бот отвечает точно — по вашим материалам, а не по памяти.</p>
+          </div>
+          <div class="knowledge-item">
+            <div class="knowledge-icon">💰</div>
+            <h3>Условия и прайс</h3>
+            <p>Актуальные цены, пакеты, скидки, партнёрские условия. Больше не нужно держать всё в голове или звонить коллегам.</p>
+          </div>
+          <div class="knowledge-item">
+            <div class="knowledge-icon">🏆</div>
+            <h3>Кейсы и истории успеха</h3>
+            <p>Результаты клиентов по отраслям и задачам. Бот найдёт подходящий кейс за секунды — по вертикали, размеру, задаче.</p>
+          </div>
+          <div class="knowledge-item">
+            <div class="knowledge-icon">🗓️</div>
+            <h3>История встреч с клиентом</h3>
+            <p>Предыдущие договорённости, озвученные боли, возражения и follow-up. Весь контекст отношений — в одном месте.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ Как работает ════════ -->
+    <section class="section section-alt" id="how" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="how-heading">Как работает In-Call AI</h2>
+        </div>
+        <div class="step">
+          <div class="step-num" aria-hidden="true">1</div>
+          <div>
+            <h3>Бот приходит на встречу как участник</h3>
+            <p>Mymeet.ai подключает бота к вашему звонку — он появляется в списке участников в Zoom, Google Meet или Teams. Все видят, что он здесь. К нему можно обращаться напрямую — вслух или в чате.</p>
+            <div class="step-features"><span class="step-tag">Zoom</span><span class="step-tag">Google Meet</span><span class="step-tag">Teams</span><span class="step-tag">Виден всем участникам</span></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" aria-hidden="true">2</div>
+          <div>
+            <h3>Задай вопрос или команду — вслух или в чате</h3>
+            <p>Обратись к боту по имени: «ИИ, найди кейс для ритейла» или «ИИ, назначь следующую встречу для всех». Бот слышит разговор, понимает контекст и отвечает по существу — не по шаблону.</p>
+            <div class="step-features"><span class="step-tag">Голосовое обращение</span><span class="step-tag">Чат звонка</span><span class="step-tag">Понимает контекст</span><span class="step-tag">База знаний компании</span></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" aria-hidden="true">3</div>
+          <div>
+            <h3>Бот отвечает или выполняет действие</h3>
+            <p>Вопрос — ищет в базе знаний и истории встреч с этим клиентом. Команда — выполняет: бронирует встречу в календаре, создаёт задачу в CRM, готовит письмо. Всё прямо на звонке, без переключения.</p>
+            <div class="step-features"><span class="step-tag">Ответы из базы</span><span class="step-tag">Бронирование встреч</span><span class="step-tag">Задачи в CRM</span><span class="step-tag">Кастомные коннекторы</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ Точка Б ════════ -->
+    <section class="section" aria-labelledby="result-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="result-heading">Как изменятся ваши встречи</h2>
+        </div>
+        <div class="cards-2">
+          <div class="card">
+            <div class="card-icon">💬</div>
+            <h3>Для менеджера по продажам</h3>
+            <p>Больше не нужно держать всё в голове и говорить «уточню». На каждый вопрос клиента есть ответ прямо на встрече. Следующий шаг фиксируется там же — не теряется. Клиент видит уверенность и экспертизу с первой встречи.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🏢</div>
+            <h3>Для команды</h3>
+            <p>Один бот знает всё, что знает вся команда. Новый менеджер берёт сложного клиента — бот передаёт контекст. Юрист не на звонке — бот отвечает по документу. Эксперт занят — бот подстраховывает. 24/7.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ FAQ ════════ -->
+    <section class="section section-alt" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="faq-heading">Частые вопросы</h2>
+        </div>
+        <div class="barrier"><div class="barrier-q">Как бот оказывается на встрече?</div><p>Mymeet.ai подключает бота к вашему звонку как полноценного участника. Он виден в списке — остальные участники знают, что бот здесь. Это не скрытое прослушивание: бот представлен открыто.</p></div>
+        <div class="barrier"><div class="barrier-q">Чем это отличается от Realtime Assistant?</div><p>Realtime Assistant — приватные подсказки только для менеджера: только ты видишь подсказки в отдельном окне. In-Call AI — участник встречи, которого слышат все. К нему можно обратиться вслух, он отвечает в чате звонка. Разные инструменты для разных задач — можно использовать вместе.</p></div>
+        <div class="barrier"><div class="barrier-q">Кто может обращаться к боту — только менеджер или клиент тоже?</div><p>Настраивается. По умолчанию к боту может обратиться любой участник звонка. Это работает в обе стороны: ваш клиент тоже может спросить бота — и получит ответ из вашей базы знаний.</p></div>
+        <div class="barrier"><div class="barrier-q">Что именно загружать в базу знаний?</div><p>Всё, на что обычно приходится отвечать: продуктовая документация, FAQ, прайс, условия сотрудничества, кейсы клиентов. Форматы: PDF, Word, таблицы. Настройка занимает около часа вместе с нашей командой. История встреч подтягивается из Mymeet.ai автоматически.</p></div>
+        <div class="barrier"><div class="barrier-q">Какие действия умеет выполнять бот?</div><p>Назначение встреч (Google Calendar, Outlook), создание задач в CRM (amoCRM, Salesforce, HubSpot), подготовка писем. Список расширяется через коннекторы — если у вас есть специфический инструмент, обсудим интеграцию.</p></div>
+        <div class="barrier"><div class="barrier-q">Безопасно ли давать боту доступ к документам компании?</div><p>Документы хранятся в защищённом хранилище Mymeet.ai. Бот не отправляет данные третьим сторонам — только отвечает из вашей базы. Уровни доступа настраиваются: можно ограничить, какую информацию бот раскрывает внешним участникам встречи.</p></div>
+      </div>
+    </section>
+
+    <!-- ════════ Сравнение ════════ -->
+    <section class="section" aria-labelledby="compare-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="compare-heading">Почему не Google, не папка с документами и не «уточню»</h2>
+        </div>
+        <div class="comp-card"><div class="vs-label">Альтернатива 1</div><h3>Поиск информации вручную во время звонка</h3><div class="comp-grid"><div class="comp-side them"><h4>Как сейчас</h4><p>Переключаешься из Zoom в документ. Теряешь нить разговора. Клиент ждёт. Находишь не то или не находишь вообще.</p></div><div class="comp-side us"><h4>С In-Call AI</h4><p>Задаёшь вопрос боту вслух. Получаешь ответ за 5 секунд. Не выходишь из разговора. Клиент видит уверенность.</p></div></div></div>
+        <div class="comp-card"><div class="vs-label">Альтернатива 2</div><h3>«Уточню и напишу» после звонка</h3><div class="comp-grid"><div class="comp-side them"><h4>Как сейчас</h4><p>Вопрос зависает. Клиент ждёт письмо. Моментум теряется. «Уточнить» растягивается на дни.</p></div><div class="comp-side us"><h4>С In-Call AI</h4><p>Ответ прямо на звонке — из базы знаний. Если бот не знает, честно скажет. Никаких «напишу позже».</p></div></div></div>
+        <div class="comp-card"><div class="vs-label">Альтернатива 3</div><h3>Эксперт или юрист на каждый звонок</h3><div class="comp-grid"><div class="comp-side them"><h4>Как сейчас</h4><p>Эксперт занят или не пришёл. Приходится переносить или проводить без него — и терять клиента.</p></div><div class="comp-side us"><h4>С In-Call AI</h4><p>Бот знает то, что знает эксперт — из его документов. Доступен на каждом звонке одновременно. 24/7.</p></div></div></div>
+      </div>
+    </section>
+
+    <!-- ════════ Final CTA ════════ -->
+    <section class="final-cta" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Добавь AI-участника на свои встречи</h2>
+      <p>Покажем, как это работает на примере ваших реальных звонков</p>
+      <a href="mailto:hello@mymeet.ai?subject=In-Call%20AI%20—%20Demo" class="btn">Записаться на демо</a>
+      <div class="note">hello@mymeet.ai · Ответим в течение дня</div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="logo" aria-label="Mymeet.ai"><span class="logo-icon" aria-hidden="true">M</span><span class="logo-text">Mymeet.ai</span></a><p>AI-инструменты для продаж и meetings intelligence</p></div>
+        <div class="footer-col"><h4>Продукты</h4><a href="index.html">Sales Suite</a><a href="https://salesprep.mymeet.ai" target="_blank" rel="noopener noreferrer">Sales Prep</a><a href="realtime-assistant.html">Realtime Assistant</a><a href="in-call-assistant.html">In-Call AI</a><a href="mailto:hello@mymeet.ai?subject=Waitlist%3A%20ICP%20Finder">ICP Finder</a></div>
+        <div class="footer-col"><h4>Компания</h4><a href="https://mymeet.ai" target="_blank" rel="noopener noreferrer">О Mymeet.ai</a><a href="https://mymeet.ai/blog" target="_blank" rel="noopener noreferrer">Блог</a></div>
+        <div class="footer-col"><h4>Контакты</h4><a href="mailto:hello@mymeet.ai">hello@mymeet.ai</a><a href="https://t.me/mymeetai" target="_blank" rel="noopener noreferrer">Telegram</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Mymeet.ai. Все права защищены.</span><div><a href="https://mymeet.ai/privacy" target="_blank" rel="noopener noreferrer">Конфиденциальность</a><span aria-hidden="true"> | </span><a href="https://mymeet.ai/terms" target="_blank" rel="noopener noreferrer">Условия</a></div></div>
+    </div>
+  </footer>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://sales.mymeet.ai/in-call-assistant#product","name":"In-Call AI by Mymeet.ai","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"AI-участник встречи: отвечает на вопросы о компании из базы знаний и выполняет действия прямо во время звонка","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB","description":"Демо бесплатно"},"publisher":{"@type":"Organization","@id":"https://mymeet.ai/#organization","name":"Mymeet.ai","url":"https://mymeet.ai/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Как бот оказывается на встрече?","acceptedAnswer":{"@type":"Answer","text":"Mymeet.ai подключает бота к вашему звонку как полноценного участника. Он виден в списке участников в Zoom, Meet или Teams."}},{"@type":"Question","name":"Чем In-Call AI отличается от Realtime Assistant?","acceptedAnswer":{"@type":"Answer","text":"Realtime Assistant — приватные подсказки только для менеджера. In-Call AI — участник встречи, которого слышат все. К нему обращаются вслух, он отвечает в чате."}},{"@type":"Question","name":"Какие действия умеет выполнять бот?","acceptedAnswer":{"@type":"Answer","text":"Назначение встреч (Google Calendar, Outlook), создание задач в CRM, подготовка писем. Расширяется через коннекторы."}},{"@type":"Question","name":"Что загружать в базу знаний?","acceptedAnswer":{"@type":"Answer","text":"Продуктовая документация, FAQ, прайс, условия, кейсы. Форматы: PDF, Word, таблицы. История встреч подтягивается из Mymeet.ai автоматически."}},{"@type":"Question","name":"Безопасно ли давать боту доступ к документам?","acceptedAnswer":{"@type":"Answer","text":"Документы хранятся в защищённом хранилище. Уровни доступа настраиваются. Данные не передаются третьим сторонам."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Mymeet.ai","item":"https://mymeet.ai/"},{"@type":"ListItem","position":2,"name":"Sales Suite","item":"https://sales.mymeet.ai/"},{"@type":"ListItem","position":3,"name":"In-Call AI","item":"https://sales.mymeet.ai/in-call-assistant"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Как использовать In-Call AI","step":[{"@type":"HowToStep","name":"Бот приходит на встречу","text":"Mymeet.ai подключает бота к вашему звонку как участника — он виден всем"},{"@type":"HowToStep","name":"Задай вопрос или команду","text":"Обратись к боту вслух или в чате — он понимает контекст разговора"},{"@type":"HowToStep","name":"Получи ответ или действие","text":"Бот отвечает из базы знаний или выполняет действие: бронирует встречу, создаёт задачу в CRM"}]}</script>
+
+</body>
+</html>
