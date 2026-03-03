@@ -159,6 +159,84 @@
   font-weight: 500;
 }
 
+/* ── Connectors Row ── */
+.connectors-row {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px 32px;
+  margin-bottom: 32px;
+  box-shadow: var(--sh-sm);
+}
+.connectors-row-label {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.connectors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.connector-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  font-size: .8125rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg-alt);
+}
+.connector-tag::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot, #94A3B8);
+  flex-shrink: 0;
+}
+.connectors-more {
+  color: var(--muted);
+  font-style: italic;
+  border-style: dashed;
+}
+.connectors-arrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--p);
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+.connectors-arrow span {
+  letter-spacing: .01em;
+}
+
+/* ── Product datasource tag ── */
+.product-datasource {
+  margin-bottom: 16px;
+  margin-top: -8px;
+}
+.product-datasource span {
+  font-size: .72rem;
+  color: var(--muted);
+  font-weight: 500;
+  background: var(--bg-alt);
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+  display: inline-block;
+}
+
 /* ── Products Grid ── */
 .products-grid {
   display: grid;
