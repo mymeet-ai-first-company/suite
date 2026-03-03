@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+
+  <!-- Primary Meta Tags -->
+  <title>Mymeet.ai Sales Suite — AI-инструменты для B2B продаж | 6 продуктов</title>
+  <meta name="description"
+    content="AI-экосистема для sales-команд: подготовка к переговорам за 60 сек, поиск ICP-клиентов, CRM-ассистент. Экономьте 10+ часов в неделю на рутине.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://sales.mymeet.ai/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mymeet.ai Sales Suite — 6 AI-инструментов для продаж">
+  <meta property="og:description"
+    content="AI-экосистема: Sales Prep, ICP Finder, AMA CRM, Real-time Assistant, Sales Analytics">
+  <meta property="og:image" content="https://sales.mymeet.ai/images/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sales.mymeet.ai/">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mymeet.ai Sales Suite — 5 AI-инструментов для продаж">
+  <meta name="twitter:description" content="AI-экосистема для sales-команд">
+  <meta name="twitter:image" content="https://sales.mymeet.ai/images/og-image.jpg">
+  <meta name="twitter:url" content="https://sales.mymeet.ai/">
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <!-- Critical CSS (first screen only) -->
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-primary: #6366F1;
+      --color-primary-dark: #4F46E5;
+      --color-primary-light: #818CF8;
+      --color-secondary: #10B981;
+      --color-bg: #FFFFFF;
+      --color-bg-alt: #F8FAFC;
+      --color-text: #0F172A;
+      --color-text-muted: #64748B;
+      --color-border: #E2E8F0;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .logo-text span {
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--color-text);
+    }
+
+    .nav-cta {
+      background: var(--color-text);
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 24px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--color-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--color-text-muted);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--color-text);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-bg-alt);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+    }
+
+    .btn-small {
+      padding: 10px 20px;
+      font-size: 0.875rem;
+      min-height: 44px;
+      width: 100%;
+    }
+
+    /* Trust signals */
+    .trust-signals {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-check {
+      width: 18px;
+      height: 18px;
+      background: var(--color-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 120px 24px 60px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+
+  <!-- Non-critical CSS (async) -->
+  <link rel="stylesheet" href="styles/main.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="styles/main.css">
+  </noscript>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Mymeet.ai Sales Suite - главная">
+        <span class="logo-icon" aria-hidden="true">M</span>
+        <span class="logo-text">Mymeet.ai <span>Sales Suite</span></span>
+      </a>
+      <nav aria-label="Основная навигация">
+        <a href="#products">Продукты</a>
+        <a href="index.html">Платформа</a>
+        <a href="https://mymeet.ai" target="_blank" rel="noopener noreferrer">О Mymeet.ai</a>
+        <a href="mailto:hello@mymeet.ai" class="nav-cta">Связаться</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-badge">6 AI-продуктов в одной экосистеме</div>
+        <h1 id="hero-heading">AI-инструменты для B2B продаж<br>от <span class="gradient">Mymeet.ai</span></h1>
+        <p class="hero-subtitle">Экономьте 10+ часов в неделю на подготовке к переговорам, поиске клиентов и работе с
+          CRM</p>
+        <div class="hero-cta">
+          <a href="#products" class="btn btn-primary">Смотреть продукты</a>
+          <a href="https://mymeet.ai" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Узнать о
+            Mymeet.ai</a>
+        </div>
+        <div class="trust-signals">
+          <div class="trust-item">
+            <span class="trust-check" aria-hidden="true">✓</span>
+            <span>Подготовка к встречам</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check" aria-hidden="true">✓</span>
+            <span>Поиск ICP-клиентов</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check" aria-hidden="true">✓</span>
+            <span>CRM-ассистент</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check" aria-hidden="true">✓</span>
+            <span>Аналитика продаж</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sales Process Section -->
+    <section class="sales-process" id="products" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="process-heading">Ваш процесс продаж с AI</h2>
+          <p>Экосистема инструментов на каждом этапе сделки</p>
+        </div>
+        <div class="process-flow">
+
+
+          <!-- Stage 1: ICP Finder -->
+          <div class="process-stage process-stage-active">
+            <div class="stage-number">1</div>
+            <div class="stage-content">
+              <div class="stage-label">Новые сделки</div>
+              <h3>ICP Finder</h3>
+              <p>Найти похожих на лучших клиентов</p>
+              <ul>
+                <li>Загрузите 5 ИНН успешных клиентов</li>
+                <li>AI найдёт look-alike компании</li>
+                <li>Экспорт готового списка в CSV</li>
+              </ul>
+              <div class="stage-cta">
+                <a href="mailto:hello@mymeet.ai?subject=Waitlist%3A%20ICP%20Finder"
+                  class="btn btn-secondary btn-small">Записаться в waitlist</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 2: Sales Prep -->
+          <div class="process-stage process-stage-active">
+            <div class="stage-number">2</div>
+            <div class="stage-content">
+              <div class="stage-label">Подготовка</div>
+              <h3>Sales Prep</h3>
+              <p>AI-подготовка к встрече за 60 секунд</p>
+              <ul>
+                <li>Brief по компании: финансы, команда, новости</li>
+                <li>Поиск ИНН и юридических данных</li>
+                <li>5 персонализированных холодных писем</li>
+              </ul>
+              <div class="stage-cta">
+                <a href="https://ai-sales-prep-ilyaberdysh.replit.app" class="btn btn-gradient btn-small" target="_blank"
+                  rel="noopener noreferrer">Попробовать бесплатно</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 3: Real-time Assistant -->
+          <div class="process-stage">
+            <div class="stage-number">3</div>
+            <div class="stage-content">
+              <div class="stage-label">Во время звонка</div>
+              <h3>Real-time Assistant</h3>
+              <p>AI-подсказки и battle cards в реальном времени</p>
+              <ul>
+                <li>Автоматический детект возражений</li>
+                <li>Готовые ответы на сложные вопросы</li>
+                <li>Интеграция с Zoom, Meet, Teams</li>
+              </ul>
+              <div class="stage-cta">
+                <a href="realtime-assistant.html"
+                  class="btn btn-secondary btn-small">Узнать подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 4: In-Call AI -->
+          <div class="process-stage process-stage-active">
+            <div class="stage-number">4</div>
+            <div class="stage-content">
+              <div class="stage-label">Во время звонка</div>
+              <h3>In-Call AI</h3>
+              <p>AI-участник встречи, которому можно задать вопрос вслух</p>
+              <ul>
+                <li>База знаний компании и история встреч</li>
+                <li>Ответы на вопросы прямо на звонке</li>
+                <li>Назначает следующую встречу из звонка</li>
+              </ul>
+              <div class="stage-cta">
+                <a href="in-call-assistant.html" class="btn btn-secondary btn-small">Узнать подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 5: Mymeet.ai Core -->
+          <div class="process-stage process-stage-core">
+            <div class="stage-number">5</div>
+            <div class="stage-content">
+              <div class="stage-label">После встречи</div>
+              <h3>Mymeet.ai</h3>
+              <p>AI-отчёт и summary по встрече</p>
+              <ul>
+                <li>Автоматическая транскрипция звонка</li>
+                <li>Summary с ключевыми договорённостями</li>
+                <li>Follow-up для клиента за 1 клик</li>
+              </ul>
+              <div class="stage-cta">
+                <a href="https://mymeet.ai" class="btn btn-gradient btn-small" target="_blank"
+                  rel="noopener noreferrer">Открыть Mymeet.ai</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 6: Sales Analytics -->
+          <div class="process-stage process-stage-cycle">
+            <div class="stage-number">6</div>
+            <div class="stage-content">
+              <div class="stage-label">Аналитика</div>
+              <h3>Sales Analytics</h3>
+              <p>Оценка встреч менеджеров на масштабе</p>
+              <ul>
+                <li>Автоматический скоринг встреч</li>
+                <li>Рейтинг менеджеров за период</li>
+                <li>Детальный разбор с рекомендациями</li>
+              </ul>
+              <div class="stage-cta">
+                <div class="cycle-arrow">↻ Использовать инсайты для поиска новых ICP (этап 1)</div>
+                <a href="mailto:hello@mymeet.ai?subject=Waitlist%3A%20Sales%20Analytics"
+                  class="btn btn-secondary btn-small">Записаться в waitlist</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 7: AMA CRM -->
+          <div class="process-stage process-stage-active">
+            <div class="stage-number">7</div>
+            <div class="stage-content">
+              <div class="stage-label">На любом этапе</div>
+              <h3>AMA CRM</h3>
+              <p>Спроси что угодно о своей CRM на естественном языке</p>
+              <ul>
+                <li>amoCRM интеграция</li>
+                <li>Вопросы на русском</li>
+                <li>Мгновенные ответы</li>
+              </ul>
+              <div class="stage-cta">
+                <a href="mailto:hello@mymeet.ai?subject=Waitlist%3A%20AMA%20CRM"
+                  class="btn btn-secondary btn-small">Записаться в waitlist</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Value Proposition Section -->
+    <section class="value-section" aria-labelledby="value-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="value-heading">Зачем это вашей команде</h2>
+          <p>Реальные результаты, которые вы увидите через неделю</p>
+        </div>
+        <div class="value-grid">
+          <div class="value-card">
+            <div class="value-metric">2+ часа</div>
+            <h3>Экономия на каждой встрече</h3>
+            <p>AI собирает brief по компании за 60 секунд вместо ручного ресёрча. Больше времени на продажи — меньше на
+              подготовку.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-metric">3x</div>
+            <h3>Больше качественных лидов</h3>
+            <p>Находите компании, похожие на ваших лучших клиентов. AI анализирует паттерны и строит look-alike
+              аудитории.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-metric">100%</div>
+            <h3>Данные из CRM на русском</h3>
+            <p>Спрашивайте о сделках, клиентах и воронке на естественном языке. Без дашбордов и SQL-запросов.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" aria-label="Mymeet.ai">
+            <span class="logo-icon" aria-hidden="true">M</span>
+            <span class="logo-text">Mymeet.ai</span>
+          </a>
+          <p>AI-инструменты для продаж и meetings intelligence</p>
+        </div>
+        <div class="footer-col">
+          <h4>Продукты</h4>
+          <a href="https://salesprep.mymeet.ai" target="_blank" rel="noopener noreferrer">Sales Prep</a>
+          <a href="mailto:hello@mymeet.ai?subject=Waitlist%3A%20ICP%20Finder">ICP Finder</a>
+          <a href="mailto:hello@mymeet.ai?subject=Waitlist%3A%20AMA%20CRM">AMA CRM</a>
+          <a href="realtime-assistant.html">Real-time Assistant</a>
+          <a href="in-call-assistant.html">In-Call AI</a>
+          <a href="mailto:hello@mymeet.ai?subject=Waitlist%3A%20Sales%20Analytics">Sales Analytics</a>
+        </div>
+        <div class="footer-col">
+          <h4>Компания</h4>
+          <a href="https://mymeet.ai" target="_blank" rel="noopener noreferrer">О Mymeet.ai</a>
+          <a href="https://mymeet.ai/blog" target="_blank" rel="noopener noreferrer">Блог</a>
+          <a href="https://mymeet.ai/careers" target="_blank" rel="noopener noreferrer">Карьера</a>
+        </div>
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <a href="mailto:hello@mymeet.ai">hello@mymeet.ai</a>
+          <a href="https://t.me/mymeetai" target="_blank" rel="noopener noreferrer">Telegram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Mymeet.ai. Все права защищены.</span>
+        <div>
+          <a href="https://mymeet.ai/privacy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
+          <span aria-hidden="true"> | </span>
+          <a href="https://mymeet.ai/terms" target="_blank" rel="noopener noreferrer">Условия использования</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://sales.mymeet.ai/#website",
+    "url": "https://sales.mymeet.ai/",
+    "name": "Mymeet.ai Sales Suite",
+    "description": "AI-инструменты для B2B продаж от Mymeet.ai",
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://mymeet.ai/#organization",
+      "name": "Mymeet.ai",
+      "url": "https://mymeet.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sales.mymeet.ai/images/logo.png"
+      },
+      "sameAs": [
+        "https://t.me/mymeetai"
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://sales.mymeet.ai/#product",
+    "name": "Mymeet.ai Sales Suite",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "AI-экосистема для sales-команд: подготовка к переговорам, поиск клиентов, CRM-ассистент",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Mymeet.ai",
+      "item": "https://mymeet.ai/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sales Suite",
+      "item": "https://sales.mymeet.ai/"
+    }]
+  }
+  </script>
+</body>
+
+</html>
