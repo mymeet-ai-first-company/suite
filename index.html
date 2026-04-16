@@ -649,7 +649,6 @@
         <a href="#products">Продукты</a>
         <a href="#next">Следующее</a>
         <a href="sales-suite.html">Sales Suite</a>
-        <a href="https://mymeet.ai" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="padding:8px 16px;font-size:.875rem;">Попробовать</a>
       </nav>
     </div>
   </header>
@@ -708,8 +707,8 @@
         <span class="section-label-line"></span>
         В разработке
       </div>
-      <h2 class="section-title">Продукты, которые мы строим сейчас</h2>
-      <p class="section-desc">Ранний доступ открыт. Оставьте email — пришлём инвайт первыми.</p>
+      <h2 class="section-title">Продукты, которые мы строим</h2>
+      <p class="section-desc">Попробуйте уже сейчас — или следите за обновлениями.</p>
 
       <div class="products-grid">
 
@@ -717,7 +716,7 @@
         <div class="product-card">
           <div class="card-top">
             <div class="product-icon">🎙️</div>
-            <span class="badge-active"><span class="badge-active-dot"></span>Ранний доступ</span>
+            <span class="badge-active"><span class="badge-active-dot"></span>Доступен</span>
           </div>
           <div>
             <h3>Лёгкий транскрибатор</h3>
@@ -727,18 +726,48 @@
             <span class="card-meta-icon">📊</span>
             <span>Аналог Otter.ai · $100M ARR</span>
           </div>
-          <form class="waitlist-form" onsubmit="handleWaitlist(event, this, 'transcriber')">
-            <input type="email" placeholder="your@email.com" required aria-label="Email для раннего доступа">
-            <button type="submit">Войти</button>
-          </form>
-          <span class="waitlist-success">✓ Вы в списке!</span>
+          <a href="https://transcriber.mymeet.ai" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="width:100%;padding:10px 20px;">Попробовать</a>
         </div>
 
-        <!-- 2. Sales Analytics -->
+        <!-- 2. AMA CRM -->
+        <div class="product-card">
+          <div class="card-top">
+            <div class="product-icon">💬</div>
+            <span class="badge-active"><span class="badge-active-dot"></span>Доступен</span>
+          </div>
+          <div>
+            <h3>AMA CRM</h3>
+          </div>
+          <p>AI-ассистент для AmoCRM. Спрашивайте CRM на русском языке — получайте аналитику в таблицах и графиках.</p>
+          <div class="card-meta">
+            <span class="card-meta-icon">🤖</span>
+            <span>Аналог HubSpot ChatSpot</span>
+          </div>
+          <a href="https://amacrm.mymeet.ai" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="width:100%;padding:10px 20px;">Попробовать</a>
+        </div>
+
+        <!-- 3. Sales Prep -->
+        <div class="product-card">
+          <div class="card-top">
+            <div class="product-icon">📋</div>
+            <span class="badge-active"><span class="badge-active-dot"></span>Доступен</span>
+          </div>
+          <div>
+            <h3>Sales Prep</h3>
+          </div>
+          <p>Подготовка к B2B-встрече за 2 минуты. AI соберёт досье на компанию: финансы, новости, конкуренты, болевые точки.</p>
+          <div class="card-meta">
+            <span class="card-meta-icon">🎯</span>
+            <span>Research-агент для продавцов</span>
+          </div>
+          <a href="https://prep.mymeet.ai" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="width:100%;padding:10px 20px;">Попробовать</a>
+        </div>
+
+        <!-- 4. Sales Analytics -->
         <div class="product-card">
           <div class="card-top">
             <div class="product-icon">📈</div>
-            <span class="badge-active"><span class="badge-active-dot"></span>Ранний доступ</span>
+            <span class="badge-active" style="background:#FFF3E0;color:#E65100;"><span class="badge-active-dot" style="background:#E65100;"></span>В разработке</span>
           </div>
           <div>
             <h3>Sales Analytics</h3>
@@ -748,53 +777,7 @@
             <span class="card-meta-icon">📊</span>
             <span>Аналог Gong · $300M ARR</span>
           </div>
-          <form class="waitlist-form" onsubmit="handleWaitlist(event, this, 'analytics')">
-            <input type="email" placeholder="your@email.com" required aria-label="Email для раннего доступа">
-            <button type="submit">Войти</button>
-          </form>
-          <span class="waitlist-success">✓ Вы в списке!</span>
-        </div>
-
-        <!-- 3. Real-time AI Coaching -->
-        <div class="product-card">
-          <div class="card-top">
-            <div class="product-icon">🎯</div>
-            <span class="badge-active"><span class="badge-active-dot"></span>Ранний доступ</span>
-          </div>
-          <div>
-            <h3>Real-time AI Coaching</h3>
-          </div>
-          <p>Десктоп-оверлей с подсказками во время звонка. Детектирует возражения, суфлирует вопросы. Только вы видите.</p>
-          <div class="card-meta">
-            <span class="card-meta-icon">⚡</span>
-            <span>Аналог Cluely · $7M ARR за 3 мес.</span>
-          </div>
-          <form class="waitlist-form" onsubmit="handleWaitlist(event, this, 'coaching')">
-            <input type="email" placeholder="your@email.com" required aria-label="Email для раннего доступа">
-            <button type="submit">Войти</button>
-          </form>
-          <span class="waitlist-success">✓ Вы в списке!</span>
-        </div>
-
-        <!-- 4. CRM Chat Interface -->
-        <div class="product-card">
-          <div class="card-top">
-            <div class="product-icon">💬</div>
-            <span class="badge-active"><span class="badge-active-dot"></span>Ранний доступ</span>
-          </div>
-          <div>
-            <h3>CRM Chat Interface</h3>
-          </div>
-          <p>Спрашивайте CRM на русском языке вместо форм и фильтров. "Покажи сделки на стадии demo за последний месяц".</p>
-          <div class="card-meta">
-            <span class="card-meta-icon">🤖</span>
-            <span>Аналог HubSpot ChatSpot</span>
-          </div>
-          <form class="waitlist-form" onsubmit="handleWaitlist(event, this, 'crm-chat')">
-            <input type="email" placeholder="your@email.com" required aria-label="Email для раннего доступа">
-            <button type="submit">Войти</button>
-          </form>
-          <span class="waitlist-success">✓ Вы в списке!</span>
+          <span class="btn btn-outline" style="width:100%;padding:10px 20px;cursor:default;opacity:.7;">Скоро</span>
         </div>
 
       </div>
@@ -824,11 +807,11 @@
 
         <div class="next-card">
           <div class="next-card-top">
-            <div class="next-icon">🗂️</div>
+            <div class="next-icon">🎯</div>
             <span class="badge-next">Next</span>
           </div>
-          <h3>Библиотека встреч</h3>
-          <p>Умный поиск по всему архиву звонков. Клипы, инсайты, ответы на вопросы по истории переговоров.</p>
+          <h3>Real-time AI Coaching</h3>
+          <p>Десктоп-оверлей с подсказками во время звонка. Детектирует возражения, суфлирует вопросы. Только вы видите.</p>
         </div>
 
         <div class="next-card">
