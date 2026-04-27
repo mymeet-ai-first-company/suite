@@ -578,17 +578,17 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>Скачайте и установите</h3>
-        <p>Откройте `.dmg` и перетащите Mymeet.ai в папку Applications.</p>
+        <p>Откройте <code>.dmg</code> и перетащите Mymeet.ai в папку Applications.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>Right-click → Open</h3>
-        <p>В Applications найдите Mymeet.ai → правый клик → <code>Open</code> → подтвердите. Однократно для бета-билдов.</p>
+        <h3>Разблокируйте через System Settings</h3>
+        <p>На macOS Sequoia при первом запуске вылезет «Apple could not verify...». <strong>Это нормально</strong> — мы пока без сертификата Apple. Подробная инструкция в FAQ ниже, в три клика.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <h3>Дайте разрешения</h3>
-        <p>macOS попросит Screen Recording и Microphone — для захвата системного звука. Разрешите оба.</p>
+        <p>macOS попросит Screen Recording и Microphone — для захвата системного звука встречи. Разрешите оба.</p>
       </div>
     </div>
   </div>
@@ -634,8 +634,23 @@
 
     <div class="faq-list">
       <div class="faq-item">
-        <h3>«App from unidentified developer» — не открывается</h3>
-        <p>В Finder → правый клик на Mymeet.ai в Applications → <code>Open</code> → подтвердите. Если правый клик не помог: <code>xattr -dr com.apple.quarantine /Applications/Mymeet.ai.app</code> в Terminal.</p>
+        <h3>«Apple could not verify Mymeet.ai is free of malware» — как открыть на Sequoia</h3>
+        <p>На macOS 15 Sequoia Apple намеренно убрал старый right-click → Open для приложений без Apple Developer ID. Сейчас flow такой (один раз на Mac):</p>
+        <ol style="margin-top:8px;padding-left:20px;color:var(--text-muted);font-size:.95rem;line-height:1.7;">
+          <li>В диалоге нажмите <strong>Done</strong></li>
+          <li>Откройте <strong>System Settings</strong> (Apple menu → System Settings)</li>
+          <li>Выберите <strong>Privacy & Security</strong> в боковой панели</li>
+          <li>Прокрутите вниз до раздела <strong>Security</strong></li>
+          <li>Увидите «Mymeet.ai was blocked because it is not from an identified developer» → нажмите <strong>Open Anyway</strong></li>
+          <li>Подтвердите Touch ID / паролем</li>
+          <li>Двойной клик по Mymeet.ai в Applications → в новом диалоге нажмите <strong>Open</strong></li>
+          <li>Готово. Дальше открывается обычным двойным кликом.</li>
+        </ol>
+        <p style="margin-top:10px;font-size:.85rem;color:var(--text-muted);">Билд подписан ad-hoc и валиден (codesign проверяется), но не нотарифицирован Apple. Notarization требует Apple Developer ID ($99/год) — добавим в следующем релизе, тогда диалога не будет совсем.</p>
+      </div>
+      <div class="faq-item">
+        <h3>«App is damaged and can't be opened» — старая ошибка</h3>
+        <p>Если видите именно такое сообщение — скачайте свежий <code>.dmg</code> по кнопке выше: в первой версии была bug в подписи, в новой исправлено. Если ошибка повторяется на свежем билде: <code>xattr -cr /Applications/Mymeet.ai.app && codesign --sign - --deep --force /Applications/Mymeet.ai.app</code> в Terminal.</p>
       </div>
       <div class="faq-item">
         <h3>Не приходит уведомление о звонке</h3>
