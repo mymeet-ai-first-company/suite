@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+
+  <title>Mymeet.ai Desktop — запись Zoom, Teams, Gather в один клик</title>
+  <meta name="description" content="Десктоп для macOS. Записывает системный звук + микрофон во встречах Zoom / Teams / Gather. Авто-старт по детекции звонка. Загружает в mymeet.ai для расшифровки.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://suite.mymeet.ai/desktop.html">
+
+  <meta property="og:title" content="Mymeet.ai Desktop — запись встреч одной кнопкой">
+  <meta property="og:description" content="macOS. Системный звук + микрофон. Авто-определение звонков в Zoom / Teams / Gather.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://suite.mymeet.ai/desktop.html">
+  <meta property="og:locale" content="ru_RU">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #0138C7;
+      --primary-dark: #0130A8;
+      --primary-light: #E8EEFB;
+      --text: #212833;
+      --text-muted: #65686F;
+      --surface: #F5F5F6;
+      --white: #FFFFFF;
+      --success: #0D9655;
+      --success-bg: #E8F7F0;
+      --warning: #FF9D16;
+      --warning-bg: #FFF3E0;
+      --border: #E2E4E8;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+      --r-btn: 4px;
+      --r-card: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--primary); }
+    nav { display: flex; align-items: center; gap: 8px; }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: var(--r-btn);
+      transition: background .15s, color .15s;
+    }
+    nav a:hover { color: var(--text); background: var(--surface); }
+    nav a.active { color: var(--primary); }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--r-btn);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background .15s, transform .15s, box-shadow .15s;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--text-muted); }
+
+    /* HERO */
+    .hero {
+      padding: 140px 0 80px;
+      background: linear-gradient(180deg, var(--primary-light) 0%, var(--white) 70%);
+      text-align: left;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow-dot {
+      width: 8px; height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 3rem;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p.lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .download-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 24px;
+      background: var(--text);
+      color: var(--white);
+      border-radius: var(--r-card);
+      text-decoration: none;
+      transition: transform .15s, background .15s;
+    }
+    .download-btn:hover { background: #0a0e15; transform: translateY(-1px); }
+    .download-btn-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .download-btn-content { flex: 1; }
+    .download-btn-arch {
+      font-size: .8rem;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 2px;
+    }
+    .download-btn-name { font-weight: 600; }
+    .download-help {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* HERO MOCKUP */
+    .hero-mock {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+    }
+    .mock-notif {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 0 0 .5px rgba(0,0,0,.10), 0 4px 16px rgba(0,0,0,.14);
+      margin-bottom: 18px;
+    }
+    .mock-logo {
+      width: 32px; height: 32px;
+      background: var(--primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-weight: 800; font-family: Manrope;
+    }
+    .mock-text { flex: 1; }
+    .mock-title { font-weight: 500; font-size: 13px; color: var(--text); }
+    .mock-app { font-size: 12px; color: var(--text-muted); }
+    .mock-btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 6px 12px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .mock-caption {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: .85rem;
+    }
+    .mock-caption strong { color: var(--text); }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 0;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .section-label-line {
+      width: 32px; height: 1px;
+      background: var(--primary);
+    }
+    h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 2.25rem;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      max-width: 700px;
+    }
+
+    /* FEATURES GRID */
+    .features {
+      background: var(--surface);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .feature {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-card);
+      padding: 28px;
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .feature h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feature p {
+      color: var(--text-muted);
+      font-size: .95rem;
+    }
+
+    /* INSTALL STEPS */
+    .install-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-card);
+      padding: 32px 28px;
+      position: relative;
+    }
+    .step-num {
+      width: 36px; height: 36px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      font-family: 'Manrope';
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .step p {
+      color: var(--text-muted);
+      font-size: .95rem;
+    }
+    .step code {
+      display: inline-block;
+      background: var(--surface);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: .85rem;
+      color: var(--text);
+    }
+
+    /* USAGE */
+    .usage {
+      background: var(--text);
+      color: var(--white);
+    }
+    .usage h2 { color: var(--white); }
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .usage-item {
+      padding: 24px;
+      background: rgba(255,255,255,.05);
+      border-radius: var(--r-card);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .usage-item h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+    .usage-item p {
+      color: rgba(255,255,255,.7);
+      font-size: .95rem;
+    }
+    .usage-item kbd {
+      display: inline-block;
+      background: rgba(255,255,255,.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', monospace;
+      font-size: .85rem;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 800px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: .95rem;
+    }
+    .faq-item code {
+      background: var(--surface);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: .85rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-meta {
+      color: var(--text-muted);
+      font-size: .9rem;
+    }
+    .footer-meta a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { padding: 120px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.25rem; }
+      h2 { font-size: 1.75rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .install-steps { grid-template-columns: 1fr; }
+      .usage-grid { grid-template-columns: 1fr; }
+      nav a { padding: 6px 10px; font-size: .85rem; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">mymeet<span>.ai</span></a>
+    <nav>
+      <a href="/">Главная</a>
+      <a href="/desktop.html" class="active">Desktop</a>
+      <a href="https://mymeet.ai" target="_blank" rel="noopener">Сайт</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          v0.1.0 · Тестовый билд для macOS
+        </div>
+        <h1>Mymeet.ai <span>Desktop</span></h1>
+        <p class="lead">
+          Записывайте Zoom, Teams и любые встречи в один клик. Авто-старт по приложению. Расшифровка приходит на app.mymeet.ai.
+        </p>
+
+        <div class="download-buttons">
+          <a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.0/Mymeet.ai-0.1.0-arm64.dmg" class="download-btn">
+            <span class="download-btn-icon">🍎</span>
+            <span class="download-btn-content">
+              <span class="download-btn-arch">Apple Silicon · M1 / M2 / M3 / M4</span>
+              <span class="download-btn-name">Скачать для Apple Silicon</span>
+            </span>
+          </a>
+          <a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.0/Mymeet.ai-0.1.0.dmg" class="download-btn">
+            <span class="download-btn-icon">💻</span>
+            <span class="download-btn-content">
+              <span class="download-btn-arch">Intel Mac</span>
+              <span class="download-btn-name">Скачать для Intel</span>
+            </span>
+          </a>
+        </div>
+
+        <p class="download-help">
+          Не уверены? Apple Menu → «Об этом Mac» → если Chip начинается с Apple — берите Apple Silicon.
+        </p>
+      </div>
+
+      <!-- Notification mockup -->
+      <div class="hero-mock">
+        <div class="mock-notif">
+          <div class="mock-logo">m</div>
+          <div class="mock-text">
+            <div class="mock-title">Вы на встрече?</div>
+            <div class="mock-app">Zoom</div>
+          </div>
+          <div class="mock-btn">Начать запись</div>
+        </div>
+        <div class="mock-caption">
+          mymeet сам видит звонок и предлагает <strong>начать запись</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <div class="section-label">
+      <span class="section-label-line"></span>
+      Что умеет
+    </div>
+    <h2>Запись и расшифровка любой встречи</h2>
+    <p class="section-desc">
+      Работает с нативными Zoom Desktop, Microsoft Teams, Gather, Slack, Discord и любыми VC-приложениями.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">🎙️</div>
+        <h3>Системный звук + микрофон</h3>
+        <p>Через нативный ScreenCaptureKit. Ловит обе стороны разговора — вашу и собеседника.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔔</div>
+        <h3>Авто-определение встреч</h3>
+        <p>Детектирует активный микрофон в Zoom, Teams, Gather, Slack, Discord. Появляется уведомление с кнопкой «Начать запись».</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📤</div>
+        <h3>Загрузка в mymeet.ai</h3>
+        <p>После Stop запись автоматически отправляется на бэкенд. Транскрипт и саммари — в вашем рабочем пространстве.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💾</div>
+        <h3>Локальная очередь</h3>
+        <p>Если упал WiFi или закрыли ноут — запись остаётся локально. При следующем запуске автоматически догружается.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="section-label-line"></span>
+      Установка
+    </div>
+    <h2>3 шага до первой записи</h2>
+    <p class="section-desc">
+      Билд пока не подписан Apple Developer ID — поэтому первый запуск через right-click. Это нормально для бета-версии.
+    </p>
+
+    <div class="install-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Скачайте и установите</h3>
+        <p>Откройте `.dmg` и перетащите Mymeet.ai в папку Applications.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Right-click → Open</h3>
+        <p>В Applications найдите Mymeet.ai → правый клик → <code>Open</code> → подтвердите. Однократно для бета-билдов.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Дайте разрешения</h3>
+        <p>macOS попросит Screen Recording и Microphone — для захвата системного звука. Разрешите оба.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USAGE -->
+<section class="usage">
+  <div class="container">
+    <div class="section-label" style="color:#7DA3F5;">
+      <span class="section-label-line" style="background:#7DA3F5;"></span>
+      Использование
+    </div>
+    <h2>Три способа начать запись</h2>
+    <p class="section-desc" style="color:rgba(255,255,255,.7);">
+      Никаких меню. Mymeet ловит звонок сам, или включается одной кнопкой.
+    </p>
+
+    <div class="usage-grid">
+      <div class="usage-item">
+        <h3>🤖 Авто-триггер</h3>
+        <p>Через 2-3 секунды после начала звонка появится уведомление «Вы на встрече? — [Начать запись]».</p>
+      </div>
+      <div class="usage-item">
+        <h3>⌨️ Хоткей</h3>
+        <p>Нажмите <kbd>⌘⇧R</kbd> → запись. Снова <kbd>⌘⇧R</kbd> → стоп.</p>
+      </div>
+      <div class="usage-item">
+        <h3>🎯 Через трей</h3>
+        <p>Иконка mymeet в правом верхнем углу. Клик → «Начать запись» / «Записи» / «Настройки».</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--surface);">
+  <div class="container">
+    <div class="section-label">
+      <span class="section-label-line"></span>
+      FAQ
+    </div>
+    <h2>Если что-то пошло не так</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>«App from unidentified developer» — не открывается</h3>
+        <p>В Finder → правый клик на Mymeet.ai в Applications → <code>Open</code> → подтвердите. Если правый клик не помог: <code>xattr -dr com.apple.quarantine /Applications/Mymeet.ai.app</code> в Terminal.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Не приходит уведомление о звонке</h3>
+        <p>Mymeet распознаёт известные приложения по бандл-ID (Zoom, Teams, Gather, Slack, Discord, Webex, Контур.Толк, Telemost, СберДжазз). Если ваше приложение в этом списке нет — нажмите Cmd+Shift+R вручную.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Запись пустая после остановки</h3>
+        <p>Скорее всего нет разрешения Screen Recording. Откройте System Settings → Privacy & Security → Screen Recording, включите тумблер для mymeet-audio-mac. Потом перезапустите приложение.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Какой нужен API-ключ?</h3>
+        <p>На время бета-теста ключ выдаётся вручную команде sales@mymeet.ai. После релиза будет login через Google/Microsoft.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Большие встречи (>1 ГБ)</h3>
+        <p>Бесплатный тариф mymeet.ai принимает файлы до 1 ГБ. Для встреч 2+ часов — нужен Pro тариф (до 3 ГБ).</p>
+      </div>
+      <div class="faq-item">
+        <h3>Поддерживается только macOS?</h3>
+        <p>Сейчас да, macOS 13+. Windows билд в roadmap, iOS/Android — ещё дальше.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-meta">
+      v0.1.0 · Тестовый билд · <a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases" target="_blank" rel="noopener">все версии</a> · <a href="mailto:hello@mymeet.ai">обратная связь</a>
+    </div>
+    <a href="/" class="logo">mymeet<span>.ai</span></a>
+  </div>
+</footer>
+
+</body>
+</html>
