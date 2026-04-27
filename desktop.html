@@ -634,8 +634,12 @@
 
     <div class="faq-list">
       <div class="faq-item">
-        <h3>«App from unidentified developer» — не открывается</h3>
-        <p>В Finder → правый клик на Mymeet.ai в Applications → <code>Open</code> → подтвердите. Если правый клик не помог: <code>xattr -dr com.apple.quarantine /Applications/Mymeet.ai.app</code> в Terminal.</p>
+        <h3>«App from unidentified developer» — как открыть</h3>
+        <p>В Finder → правый клик на <strong>Mymeet.ai</strong> в Applications → <code>Open</code> → подтвердите кнопкой Open в диалоге. После первого подтверждения дальше открывается обычным двойным кликом. Билд подписан ad-hoc, но не Apple Developer ID — поэтому одноразовое подтверждение требуется.</p>
+      </div>
+      <div class="faq-item">
+        <h3>«App is damaged and can't be opened» — что делать</h3>
+        <p>Если видите такое сообщение (старая версия скачивалась с этой ошибкой), скачайте свежий .dmg по кнопке выше и переустановите. В свежих билдах эта ошибка исправлена. Если ошибка повторяется: <code>xattr -cr /Applications/Mymeet.ai.app && codesign --sign - --deep --force /Applications/Mymeet.ai.app</code> в Terminal.</p>
       </div>
       <div class="faq-item">
         <h3>Не приходит уведомление о звонке</h3>
