@@ -478,7 +478,7 @@
       <div>
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
-          v0.1.9 · Тестовый билд для macOS
+          v0.1.10 · Тестовый билд для macOS
         </div>
         <h1>Mymeet.ai <span>Desktop</span></h1>
         <p class="lead">
@@ -486,14 +486,14 @@
         </p>
 
         <div class="download-buttons">
-          <a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.9/Mymeet.ai-0.1.9-arm64.dmg" class="download-btn">
+          <a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.10/Mymeet.ai-0.1.10-arm64.dmg" class="download-btn">
             <span class="download-btn-icon">🍎</span>
             <span class="download-btn-content">
               <span class="download-btn-arch">Apple Silicon · M1 / M2 / M3 / M4</span>
               <span class="download-btn-name">Скачать для Apple Silicon</span>
             </span>
           </a>
-          <a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.9/Mymeet.ai-0.1.9.dmg" class="download-btn">
+          <a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.10/Mymeet.ai-0.1.10.dmg" class="download-btn">
             <span class="download-btn-icon">💻</span>
             <span class="download-btn-content">
               <span class="download-btn-arch">Intel Mac</span>
@@ -541,7 +541,7 @@
       <div class="feature">
         <div class="feature-icon">🎙️</div>
         <h3>Системный звук + микрофон</h3>
-        <p>Через нативный ScreenCaptureKit. Ловит обе стороны разговора — вашу и собеседника.</p>
+        <p>Через нативный Core Audio Process Tap + микрофон. Ловит обе стороны разговора — вашу и собеседника.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">🔔</div>
@@ -588,7 +588,7 @@
       <div class="step">
         <div class="step-num">3</div>
         <h3>Дайте разрешения</h3>
-        <p>macOS попросит Screen Recording и Microphone — для захвата системного звука встречи. Разрешите оба.</p>
+        <p>macOS попросит Audio Capture и Microphone — для захвата системного звука встречи и вашего голоса. Разрешите оба.</p>
       </div>
     </div>
   </div>
@@ -601,7 +601,7 @@
       <span class="section-label-line" style="background:#7DA3F5;"></span>
       Использование
     </div>
-    <h2>Три способа начать запись</h2>
+    <h2>Запуск и остановка записи</h2>
     <p class="section-desc" style="color:rgba(255,255,255,.7);">
       Никаких меню. Mymeet ловит звонок сам, или включается одной кнопкой.
     </p>
@@ -610,6 +610,10 @@
       <div class="usage-item">
         <h3>🤖 Авто-триггер</h3>
         <p>Через 2-3 секунды после начала звонка появится уведомление «Вы на встрече? — [Начать запись]».</p>
+      </div>
+      <div class="usage-item">
+        <h3>⏱️ Авто-стоп</h3>
+        <p>Когда приложение звонка перестаёт использовать микрофон, Mymeet предложит остановить запись.</p>
       </div>
       <div class="usage-item">
         <h3>⌨️ Хоткей</h3>
@@ -658,7 +662,7 @@
       </div>
       <div class="faq-item">
         <h3>Запись пустая после остановки</h3>
-        <p>Скорее всего нет разрешения Screen Recording. Откройте System Settings → Privacy & Security → Screen Recording, включите тумблер для mymeet-audio-mac. Потом перезапустите приложение.</p>
+        <p>Скорее всего нет разрешения Audio Capture или Microphone. Откройте System Settings → Privacy & Security, проверьте разрешения для Mymeet.ai и перезапустите приложение.</p>
       </div>
       <div class="faq-item">
         <h3>Какой нужен API-ключ?</h3>
@@ -680,7 +684,7 @@
 <footer>
   <div class="container footer-inner">
     <div class="footer-meta">
-      v0.1.9 · Тестовый билд ·<a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases" target="_blank" rel="noopener">все версии</a> · <a href="mailto:hello@mymeet.ai">обратная связь</a>
+      v0.1.10 · Тестовый билд ·<a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases" target="_blank" rel="noopener">все версии</a> · <a href="mailto:hello@mymeet.ai">обратная связь</a>
     </div>
     <a href="/" class="logo">mymeet<span>.ai</span></a>
   </div>
