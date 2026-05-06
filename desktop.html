@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 
   <title>Mymeet.ai Desktop — запись Zoom, Teams, Gather в один клик</title>
-  <meta name="description" content="Десктоп для macOS. Записывает системный звук + микрофон во встречах Zoom / Teams / Gather. Авто-старт по детекции звонка. Загружает в mymeet.ai для расшифровки.">
+  <meta name="description" content="Десктоп для macOS и Windows. Записывает системный звук + микрофон во встречах Zoom / Teams / Gather. Авто-старт по детекции звонка. Загружает в mymeet.ai для расшифровки.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://suite.mymeet.ai/desktop.html">
 
   <meta property="og:title" content="Mymeet.ai Desktop — запись встреч одной кнопкой">
-  <meta property="og:description" content="macOS. Системный звук + микрофон. Авто-определение звонков в Zoom / Teams / Gather.">
+  <meta property="og:description" content="macOS и Windows. Системный звук + микрофон. Авто-определение звонков в Zoom / Teams / Gather.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://suite.mymeet.ai/desktop.html">
   <meta property="og:locale" content="ru_RU">
@@ -478,7 +478,7 @@
       <div>
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
-          v0.1.16 · Тестовый билд для macOS
+          macOS v0.1.16 · Windows beta v0.1.15
         </div>
         <h1>Mymeet.ai <span>Desktop</span></h1>
         <p class="lead">
@@ -500,10 +500,17 @@
               <span class="download-btn-name">Скачать для Intel</span>
             </span>
           </a>
+          <a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.15/Mymeet.ai.Setup.0.1.15.exe" class="download-btn">
+            <span class="download-btn-icon">🪟</span>
+            <span class="download-btn-content">
+              <span class="download-btn-arch">Windows 10 / 11 · beta</span>
+              <span class="download-btn-name">Скачать для Windows</span>
+            </span>
+          </a>
         </div>
 
         <p class="download-help">
-          Не уверены? Apple Menu → «Об этом Mac» → если Chip начинается с Apple — берите Apple Silicon.
+          Mac: Apple Menu → «Об этом Mac» → если Chip начинается с Apple — берите Apple Silicon. Windows: скачайте beta-инсталлятор выше.
         </p>
       </div>
 
@@ -541,7 +548,7 @@
       <div class="feature">
         <div class="feature-icon">🎙️</div>
         <h3>Системный звук + микрофон</h3>
-        <p>Через нативный Core Audio Process Tap + микрофон. Ловит обе стороны разговора — вашу и собеседника.</p>
+        <p>Записывает звук встречи и микрофон средствами десктопной системы. Ловит обе стороны разговора — вашу и собеседника.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">🔔</div>
@@ -571,24 +578,24 @@
     </div>
     <h2>3 шага до первой записи</h2>
     <p class="section-desc">
-      Билд пока не подписан Apple Developer ID — поэтому первый запуск через right-click. Это нормально для бета-версии.
+      Бета-билды пока не подписаны сертификатами платформ — macOS и Windows могут показать предупреждение при первом запуске.
     </p>
 
     <div class="install-steps">
       <div class="step">
         <div class="step-num">1</div>
         <h3>Скачайте и установите</h3>
-        <p>Откройте <code>.dmg</code> и перетащите Mymeet.ai в папку Applications.</p>
+        <p>На macOS откройте <code>.dmg</code> и перетащите Mymeet.ai в Applications. На Windows запустите <code>.exe</code>-инсталлятор.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>Разблокируйте через System Settings</h3>
-        <p>На macOS Sequoia при первом запуске вылезет «Apple could not verify...». <strong>Это нормально</strong> — мы пока без сертификата Apple. Подробная инструкция в FAQ ниже, в три клика.</p>
+        <h3>Разблокируйте первый запуск</h3>
+        <p>На macOS Sequoia может появиться «Apple could not verify...», на Windows — SmartScreen. <strong>Это нормально</strong> для неподписанной беты. Инструкции есть в FAQ ниже.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <h3>Дайте разрешения</h3>
-        <p>macOS попросит Audio Capture и Microphone — для захвата системного звука встречи и вашего голоса. Разрешите оба.</p>
+        <p>Разрешите доступ к микрофону и записи системного аудио, чтобы Mymeet мог захватить встречу и ваш голос.</p>
       </div>
     </div>
   </div>
@@ -617,7 +624,7 @@
       </div>
       <div class="usage-item">
         <h3>⌨️ Хоткей</h3>
-        <p>Нажмите <kbd>⌘⇧R</kbd> → запись. Снова <kbd>⌘⇧R</kbd> → стоп.</p>
+        <p>На macOS нажмите <kbd>⌘⇧R</kbd>, на Windows — <kbd>Ctrl+Shift+R</kbd>. Повторное нажатие остановит запись.</p>
       </div>
       <div class="usage-item">
         <h3>🎯 Через трей</h3>
@@ -657,8 +664,12 @@
         <p>Если видите именно такое сообщение — скачайте свежий <code>.dmg</code> по кнопке выше: в первой версии была bug в подписи, в новой исправлено. Если ошибка повторяется на свежем билде: <code>xattr -cr /Applications/Mymeet.ai.app && codesign --sign - --deep --force /Applications/Mymeet.ai.app</code> в Terminal.</p>
       </div>
       <div class="faq-item">
+        <h3>Windows SmartScreen пишет «Unknown publisher»</h3>
+        <p>Windows beta пока не подписана code-signing сертификатом. Нажмите <strong>More info</strong> → <strong>Run anyway</strong>. После установки Mymeet запускается как обычное tray-приложение.</p>
+      </div>
+      <div class="faq-item">
         <h3>Не приходит уведомление о звонке</h3>
-        <p>Mymeet распознаёт известные приложения по бандл-ID (Zoom, Teams, Gather, Slack, Discord, Webex, Контур.Толк, Telemost, СберДжазз). Если ваше приложение в этом списке нет — нажмите Cmd+Shift+R вручную.</p>
+        <p>Mymeet распознаёт известные приложения по системным идентификаторам (Zoom, Teams, Gather, Slack, Discord, Webex, Контур.Толк, Telemost, СберДжазз). Если вашего приложения в списке нет — запустите запись вручную через хоткей.</p>
       </div>
       <div class="faq-item">
         <h3>Запись пустая после остановки</h3>
@@ -673,8 +684,8 @@
         <p>Бесплатный тариф mymeet.ai принимает файлы до 1 ГБ. Для встреч 2+ часов — нужен Pro тариф (до 3 ГБ).</p>
       </div>
       <div class="faq-item">
-        <h3>Поддерживается только macOS?</h3>
-        <p>Сейчас да, macOS 13+. Windows билд в roadmap, iOS/Android — ещё дальше.</p>
+        <h3>Какие платформы поддерживаются?</h3>
+        <p>Сейчас доступны macOS 13+ и Windows beta. iOS/Android — дальше в roadmap.</p>
       </div>
     </div>
   </div>
@@ -684,7 +695,7 @@
 <footer>
   <div class="container footer-inner">
     <div class="footer-meta">
-      v0.1.16 · Тестовый билд ·<a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases" target="_blank" rel="noopener">все версии</a> · <a href="mailto:hello@mymeet.ai">обратная связь</a>
+      macOS v0.1.16 · Windows beta v0.1.15 ·<a href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases" target="_blank" rel="noopener">все версии</a> · <a href="mailto:hello@mymeet.ai">обратная связь</a>
     </div>
     <a href="/" class="logo">mymeet<span>.ai</span></a>
   </div>
