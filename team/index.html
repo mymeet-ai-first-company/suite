@@ -593,7 +593,6 @@
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="#team">Смотреть карточки</a>
-              <button class="button" type="button" id="print-button">Печать</button>
             </div>
           </div>
           <figure class="overview">
@@ -670,7 +669,6 @@
       document.addEventListener("DOMContentLoaded", init);
 
       async function init() {
-        document.getElementById("print-button").addEventListener("click", () => window.print());
         document.getElementById("search").addEventListener("input", (event) => {
           state.search = event.target.value.trim().toLowerCase();
           applyFilters();
