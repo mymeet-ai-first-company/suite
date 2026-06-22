@@ -15,8 +15,8 @@
       "id": "mon-work",
       "title": "Рабочий день в SOK",
       "day": "2026-06-29",
-      "start": 720,
-      "duration": 390,
+      "start": 600,
+      "duration": 510,
       "category": "work",
       "location": "SOK 306-307",
       "description": "Старт недели: договориться о фокусах, разложить цели и синхронизировать команды."
@@ -42,14 +42,14 @@
       "description": "Фокусная работа по продуктам и операционным задачам."
     },
     {
-      "id": "tue-podcast",
-      "title": "Командный подкаст",
+      "id": "tue-bowling",
+      "title": "Боулинг и бильярд",
       "day": "2026-06-30",
-      "start": 1140,
-      "duration": 120,
-      "category": "creative",
-      "location": "Студия на 10 человек",
-      "description": "Записать внутренний выпуск про командную кухню и то, как все реально устроено."
+      "start": 1170,
+      "duration": 150,
+      "category": "sport",
+      "location": "Локация TBD",
+      "description": "Дорожка, стол и loser bracket по настроению."
     },
     {
       "id": "wed-work",
@@ -72,54 +72,54 @@
       "description": "Арендовать корты и сыграть командами."
     },
     {
-      "id": "thu-work",
-      "title": "Рабочий день в SOK",
+      "id": "thu-hackathon",
+      "title": "Фулл vibe-code хакатон",
       "day": "2026-07-02",
-      "start": 600,
-      "duration": 510,
-      "category": "work",
-      "location": "SOK 306-307",
-      "description": "Рабочий день с отдельным слотом под контент и быстрые продуктовые решения."
-    },
-    {
-      "id": "thu-reels",
-      "title": "Рилс-день",
-      "day": "2026-07-02",
-      "start": 1140,
-      "duration": 150,
-      "category": "creative",
-      "location": "SOK / город",
-      "description": "Сценарии и референсы от Андрюхи, съемка пачкой после работы."
-    },
-    {
-      "id": "fri-work",
-      "title": "Рабочий день в SOK",
-      "day": "2026-07-03",
       "start": 600,
       "duration": 480,
-      "category": "work",
+      "category": "creative",
       "location": "SOK 306-307",
-      "description": "Закрыть рабочую неделю, собрать идеи и подготовить субботний хакатон."
+      "description": "Один день, команды, быстрые прототипы и демо к вечеру."
+    },
+    {
+      "id": "thu-demo",
+      "title": "Демо и неформальный вечер",
+      "day": "2026-07-02",
+      "start": 1110,
+      "duration": 180,
+      "category": "social",
+      "location": "SOK / город",
+      "description": "Показать, что получилось на хакатоне, а дальше спокойно переключиться в вечер."
+    },
+    {
+      "id": "fri-strategy",
+      "title": "Страт-сессия и итоги квартала",
+      "day": "2026-07-03",
+      "start": 600,
+      "duration": 450,
+      "category": "strategy",
+      "location": "SOK 306-307",
+      "description": "Подвести квартал, зафиксировать решения и договориться, что делаем дальше."
     },
     {
       "id": "fri-party",
-      "title": "Вечеринка в коворкинге",
+      "title": "Вечер: офис или бар",
       "day": "2026-07-03",
-      "start": 1110,
+      "start": 1140,
       "duration": 210,
       "category": "social",
-      "location": "SOK 306-307",
-      "description": "Пиво, снеки, проектор, матч ЧМ и/или F1."
+      "location": "SOK / Москва",
+      "description": "Пиво, снеки, проектор, матч ЧМ и/или F1. Если захочется - уйти куда-нибудь в город."
     },
     {
-      "id": "sat-hackathon",
-      "title": "Фулл vibe-code хакатон",
+      "id": "sat-walk",
+      "title": "Гуляем и отдыхаем",
       "day": "2026-07-04",
-      "start": 660,
-      "duration": 390,
-      "category": "work",
-      "location": "SOK 306-307",
-      "description": "Один день, команды, быстрые прототипы и демо к вечеру."
+      "start": 720,
+      "duration": 360,
+      "category": "free",
+      "location": "Москва",
+      "description": "Без работы. Просто погулять, выдохнуть и провести день без созвонов и задач."
     },
     {
       "id": "sat-ride",

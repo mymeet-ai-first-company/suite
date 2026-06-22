@@ -57,8 +57,7 @@
               <h1 id="heroTitle">Mymeet Moscow Offsite 2026</h1>
               <p class="hero__lead">Собираемся с 29 июня по 5 июля: работаем вместе неделю в SOK на Земляном Валу, живем рядом с Красными Воротами и кайфуем по вечерам.</p>
               <div class="hero__actions">
-                <button class="button button--primary" type="button" id="editButton">Внести изменения</button>
-                <a class="button" href="#program">Открыть программу</a>
+                <a class="button button--primary" href="#program">Открыть программу</a>
               </div>
               <div class="pill-row" aria-label="Краткая сводка">
                 <span class="pill">29 июня - 5 июля</span>
@@ -101,50 +100,19 @@
             <div>
               <div class="section__label">Главный экран</div>
               <h2 id="programTitle">Программа недели</h2>
-              <p class="section__desc">Без тяжелой сетки: днем один рабочий блок, вечером понятная активность с понедельника по субботу.</p>
-            </div>
-            <div>
-              <div class="status-line" id="statusLine" role="status" aria-live="polite"></div>
+              <p class="section__desc">Рабочие дни, вечерние планы, хакатон в четверг, страт-сессия в пятницу и спокойная суббота без работы.</p>
             </div>
           </div>
 
           <div class="program-toolbar">
-            <div class="legend" aria-label="Легенда календаря">
+            <div class="legend" aria-label="Легенда программы">
               <span class="legend__item"><span class="legend__dot legend__dot--travel"></span>Заезд</span>
               <span class="legend__item"><span class="legend__dot legend__dot--work"></span>Работа</span>
+              <span class="legend__item"><span class="legend__dot legend__dot--strategy"></span>Стратегия</span>
               <span class="legend__item"><span class="legend__dot legend__dot--creative"></span>Креатив</span>
               <span class="legend__item"><span class="legend__dot legend__dot--sport"></span>Спорт</span>
               <span class="legend__item"><span class="legend__dot legend__dot--social"></span>Команда</span>
-            </div>
-            <div class="hero__actions">
-              <button class="button button--primary" type="button" id="saveButton" hidden>Сохранить</button>
-              <button class="button button--danger" type="button" id="resetButton" hidden>Сбросить</button>
-            </div>
-          </div>
-
-          <div class="editor-panel" aria-label="Редактор события">
-            <div class="editor-panel__grid">
-              <div class="field">
-                <label for="eventSelect">Блок</label>
-                <select id="eventSelect"></select>
-              </div>
-              <div class="field">
-                <label for="daySelect">День</label>
-                <select id="daySelect"></select>
-              </div>
-              <div class="field">
-                <label for="startSelect">Старт</label>
-                <select id="startSelect"></select>
-              </div>
-              <div class="field">
-                <label for="durationSelect">Длительность</label>
-                <select id="durationSelect"></select>
-              </div>
-              <div class="field">
-                <label for="categorySelect">Тип</label>
-                <select id="categorySelect"></select>
-              </div>
-              <a class="button" href="#program">К программе</a>
+              <span class="legend__item"><span class="legend__dot legend__dot--free"></span>Свободно</span>
             </div>
           </div>
 
@@ -173,7 +141,7 @@
             <div>
               <div class="section__label">Пул идей</div>
               <h2 id="activitiesTitle">Активности</h2>
-              <p class="section__desc">Все идеи из черновика собраны на странице и часть уже стоит в календаре.</p>
+              <p class="section__desc">Все идеи из черновика собраны на странице, часть уже стоит в программе недели.</p>
             </div>
           </div>
           <div class="activity-grid" id="activityGrid"></div>
@@ -184,7 +152,7 @@
     <footer class="footer">
       <div class="container footer__inner">
         <span>Mymeet.ai Offsite 2026</span>
-        <span>Обновляемая публичная программа недели</span>
+        <span>Публичная программа недели</span>
       </div>
     </footer>
   </div>

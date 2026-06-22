@@ -24,7 +24,6 @@
   --orange: #FF9E2C;
   --yellow: #F2C300;
   --teal: #0DACAA;
-  --calendar-hour: 64px;
 }
 
 html {
@@ -39,10 +38,6 @@ body {
   line-height: 1.35;
   color: var(--text-primary);
   background: var(--surface-page);
-}
-
-body.editing {
-  background: var(--surface-light);
 }
 
 a {
@@ -393,7 +388,6 @@ input:focus-visible {
   background: var(--surface-page);
 }
 
-.calendar-toolbar,
 .program-toolbar {
   display: flex;
   align-items: center;
@@ -401,10 +395,6 @@ input:focus-visible {
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 16px;
-}
-
-.program-toolbar .hero__actions {
-  margin-top: 0;
 }
 
 .legend {
@@ -433,50 +423,14 @@ input:focus-visible {
 .legend__dot--food { background: var(--orange); }
 .legend__dot--work { background: var(--blue); }
 .legend__dot--travel { background: var(--teal); }
+.legend__dot--strategy { background: var(--purple); }
 .legend__dot--creative { background: var(--purple); }
 .legend__dot--sport { background: var(--text-success); }
 .legend__dot--social { background: var(--yellow); }
-
-.status-line {
-  min-height: 24px;
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.status-line.is-error {
-  color: var(--text-danger);
-}
-
-.status-line.is-success {
-  color: var(--text-success);
-}
-
-.editor-panel {
-  display: none;
-  margin-bottom: 16px;
-  border: 1px solid var(--border-default);
-  border-radius: 4px;
-  padding: 16px;
-  background: var(--surface-page);
-}
-
-body.editing .editor-panel {
-  display: block;
-}
-
-.editor-panel__grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
-  gap: 12px;
-  align-items: end;
-}
+.legend__dot--free { background: var(--teal); }
 
 .program-board {
-  border: 1px solid var(--border-default);
-  border-radius: 4px;
-  background: var(--surface-page);
-  padding: 16px;
+  background: transparent;
 }
 
 .program-grid {
@@ -486,10 +440,9 @@ body.editing .editor-panel {
 }
 
 .day-tile {
-  min-height: 320px;
   border: 1px solid var(--border-default);
   border-radius: 4px;
-  padding: 16px;
+  padding: 24px;
   background: var(--surface-page);
   display: flex;
   flex-direction: column;
@@ -539,28 +492,25 @@ body.editing .editor-panel {
 }
 
 .program-event {
-  border: 1px solid var(--border-default);
   border-left: 4px solid var(--blue);
-  border-radius: 4px;
-  padding: 16px;
-  background: var(--surface-page);
-  cursor: pointer;
-}
-
-.program-event:hover {
-  background: var(--surface-light);
-}
-
-.program-event.is-selected {
-  border-color: var(--blue);
+  padding: 4px 0 4px 16px;
+  background: transparent;
 }
 
 .program-event--food { border-left-color: var(--orange); }
 .program-event--work { border-left-color: var(--blue); }
 .program-event--travel { border-left-color: var(--teal); }
+.program-event--strategy { border-left-color: var(--purple); }
 .program-event--creative { border-left-color: var(--purple); }
 .program-event--sport { border-left-color: var(--text-success); }
 .program-event--social { border-left-color: var(--yellow); }
+.program-event--free { border-left-color: var(--teal); }
+
+.program-event + .program-event {
+  margin-top: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-default);
+}
 
 .program-event__top {
   display: flex;
@@ -598,184 +548,6 @@ body.editing .editor-panel {
   margin-top: 12px;
   font-size: 13px;
   font-weight: 500;
-}
-
-.field {
-  display: grid;
-  gap: 6px;
-}
-
-.field label {
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.field select {
-  width: 100%;
-  height: 36px;
-  border: 1px solid var(--border-strong);
-  border-radius: 4px;
-  padding: 0 12px;
-  background: var(--surface-page);
-  color: var(--text-primary);
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.calendar-frame {
-  border: 1px solid var(--border-default);
-  border-radius: 4px;
-  background: var(--surface-page);
-  overflow: auto;
-}
-
-.calendar-grid {
-  min-width: 1120px;
-  display: grid;
-  grid-template-columns: 64px repeat(7, minmax(136px, 1fr));
-}
-
-.time-head,
-.day-head {
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  min-height: 64px;
-  border-bottom: 1px solid var(--border-default);
-  background: var(--surface-page);
-}
-
-.time-head {
-  left: 0;
-  z-index: 4;
-  border-right: 1px solid var(--border-default);
-}
-
-.day-head {
-  padding: 12px;
-  border-right: 1px solid var(--border-default);
-}
-
-.day-head__name {
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.day-head__date {
-  margin-top: 4px;
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.time-axis {
-  position: sticky;
-  left: 0;
-  z-index: 2;
-  min-height: calc(var(--calendar-hour) * 16);
-  border-right: 1px solid var(--border-default);
-  background: var(--surface-page);
-}
-
-.time-axis__tick {
-  height: var(--calendar-hour);
-  border-bottom: 1px solid var(--border-default);
-  padding: 4px 8px;
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.day-lane {
-  position: relative;
-  min-height: calc(var(--calendar-hour) * 16);
-  border-right: 1px solid var(--border-default);
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      var(--surface-page) 0,
-      var(--surface-page) 63px,
-      var(--border-default) 63px,
-      var(--border-default) 64px
-    );
-}
-
-.day-lane.is-drop-target {
-  background: var(--blue-lightest);
-}
-
-.event-card {
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  min-height: 48px;
-  border: 1px solid var(--border-default);
-  border-left: 4px solid var(--blue);
-  border-radius: 4px;
-  padding: 8px 8px 8px 12px;
-  background: var(--surface-page);
-  overflow: hidden;
-  cursor: default;
-}
-
-body.editing .event-card {
-  cursor: grab;
-}
-
-.event-card.is-selected {
-  border-color: var(--blue);
-}
-
-.event-card--food { border-left-color: var(--orange); }
-.event-card--work { border-left-color: var(--blue); }
-.event-card--travel { border-left-color: var(--teal); }
-.event-card--creative { border-left-color: var(--purple); }
-.event-card--sport { border-left-color: var(--text-success); }
-.event-card--social { border-left-color: var(--yellow); }
-
-.event-card__time {
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.event-card__title {
-  margin-top: 2px;
-  color: var(--text-primary);
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.event-card__meta {
-  margin-top: 4px;
-  color: var(--text-tertiary);
-  font-size: 12px;
-}
-
-.event-card__actions {
-  display: none;
-  position: absolute;
-  right: 4px;
-  bottom: 4px;
-  gap: 4px;
-}
-
-body.editing .event-card__actions {
-  display: flex;
-}
-
-.event-card__actions .button {
-  width: 24px;
-  min-width: 24px;
-  min-height: 24px;
-  height: 24px;
-  padding: 0;
-}
-
-.event-card__actions svg {
-  width: 12px;
-  height: 12px;
 }
 
 .activity-grid {
@@ -840,10 +612,6 @@ body.editing .event-card__actions {
   .program-grid {
     grid-template-columns: 1fr 1fr;
   }
-
-  .editor-panel__grid {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (max-width: 720px) {
@@ -865,7 +633,6 @@ body.editing .event-card__actions {
   }
 
   .hero__actions,
-  .calendar-toolbar,
   .program-toolbar,
   .section__head {
     align-items: stretch;
@@ -883,47 +650,11 @@ body.editing .event-card__actions {
   .media-stack,
   .logistics-grid,
   .activity-grid,
-  .program-grid,
-  .editor-panel__grid {
+  .program-grid {
     grid-template-columns: 1fr;
   }
 
   .program-board {
     padding: 0;
-    border: 0;
-  }
-
-  .day-tile {
-    min-height: 0;
-  }
-
-  .calendar-frame {
-    border: 0;
-    overflow: visible;
-  }
-
-  .calendar-grid {
-    min-width: 0;
-    display: block;
-  }
-
-  .time-head,
-  .time-axis {
-    display: none;
-  }
-
-  .day-head {
-    position: static;
-    min-height: 0;
-    margin-top: 16px;
-    border: 1px solid var(--border-default);
-    border-bottom: 0;
-    border-radius: 4px 4px 0 0;
-  }
-
-  .day-lane {
-    min-height: calc(var(--calendar-hour) * 16);
-    border: 1px solid var(--border-default);
-    border-radius: 0 0 4px 4px;
   }
 }
