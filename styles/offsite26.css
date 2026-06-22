@@ -465,15 +465,10 @@ input:focus-visible {
   font-weight: 500;
 }
 
-.day-tile__date,
-.day-tile__count {
+.day-tile__date {
   color: var(--text-secondary);
   font-size: 12px;
   font-weight: 500;
-}
-
-.day-tile__count {
-  white-space: nowrap;
 }
 
 .day-tile__body {
@@ -515,7 +510,7 @@ input:focus-visible {
 .program-event__top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 8px;
   color: var(--text-secondary);
   font-size: 12px;

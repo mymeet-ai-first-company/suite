@@ -10,16 +10,6 @@
     { id: "2026-07-05", weekday: "Воскресенье", date: "5 июля", tone: "wrap" }
   ];
 
-  const CATEGORY_LABELS = {
-    work: "Работа",
-    travel: "Заезд",
-    strategy: "Стратегия",
-    creative: "Креатив",
-    sport: "Спорт",
-    social: "Команда",
-    free: "Свободно"
-  };
-
   const PROGRAM_EVENTS = [
     {
       id: "sun-arrival",
@@ -214,12 +204,6 @@
       .replaceAll("'", "&#039;");
   }
 
-  function slotLabel(count) {
-    if (count === 1) return "1 блок";
-    if (count > 1 && count < 5) return `${count} блока`;
-    return `${count} блоков`;
-  }
-
   function groupEventsByDay(events) {
     return DAYS.reduce((groups, day) => {
       groups[day.id] = events.filter((event) => event.day === day.id);
@@ -258,7 +242,6 @@
       <article class="program-event program-event--${escapeHtml(event.category)}">
         <div class="program-event__top">
           <span>${escapeHtml(event.time)}</span>
-          <span>${escapeHtml(CATEGORY_LABELS[event.category] || event.category)}</span>
         </div>
         <h3>${escapeHtml(event.title)}</h3>
         <p>${escapeHtml(event.description)}</p>
@@ -280,7 +263,6 @@
               <div class="day-tile__weekday">${escapeHtml(day.weekday)}</div>
               <div class="day-tile__date">${escapeHtml(day.date)}</div>
             </div>
-            <span class="day-tile__count">${slotLabel(events.length)}</span>
           </div>
           <div class="day-tile__body">
             ${events.map(renderProgramBlock).join("") || '<div class="day-tile__empty">Пока пусто</div>'}
