@@ -11,6 +11,7 @@ const STATE_PATH = path.join(DATA_DIR, "offsite26-schedule.json");
 const BODY_LIMIT_BYTES = 128 * 1024;
 
 const DAYS = new Set([
+  "2026-06-28",
   "2026-06-29",
   "2026-06-30",
   "2026-07-01",
@@ -113,7 +114,7 @@ function sanitizeEvent(input) {
   if (!isQuarterHour(start) || start < 480 || start > 1425) {
     throw new Error(`Invalid start time for ${id}`);
   }
-  if (!isQuarterHour(duration) || duration < 15 || duration > 480 || start + duration > 1440) {
+  if (!isQuarterHour(duration) || duration < 15 || duration > 720 || start + duration > 1440) {
     throw new Error(`Invalid duration for ${id}`);
   }
 

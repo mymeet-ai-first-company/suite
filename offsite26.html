@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Mymeet Moscow Offsite 2026</title>
-  <meta name="description" content="Публичная страница московского offsite Mymeet.ai: проживание, коворкинг SOK, программа недели и редактируемый календарь событий.">
+  <meta name="description" content="Публичная страница московского offsite Mymeet.ai: проживание, коворкинг SOK и программа вечерних активностей.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://suite.mymeet.ai/offsite26">
 
   <meta property="og:title" content="Mymeet Moscow Offsite 2026">
-  <meta property="og:description" content="Командная неделя в Москве с 29 июня по 5 июля: SOK, гостиница, рабочие слоты и вечерние активности.">
+  <meta property="og:description" content="Командная неделя в Москве с 29 июня по 5 июля: работаем в SOK и кайфуем по вечерам.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://suite.mymeet.ai/offsite26">
   <meta property="og:image" content="https://suite.mymeet.ai/images/offsite26/sok-zemlyanoy-val.jpg">
@@ -17,7 +17,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mymeet Moscow Offsite 2026">
-  <meta name="twitter:description" content="Календарь командной недели Mymeet.ai в Москве.">
+  <meta name="twitter:description" content="Программа командной недели Mymeet.ai в Москве.">
   <meta name="twitter:image" content="https://suite.mymeet.ai/images/offsite26/sok-zemlyanoy-val.jpg">
 
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -37,7 +37,7 @@
           <span>mymeet.ai</span>
         </a>
         <nav class="topbar__nav" aria-label="Навигация">
-          <a href="#calendar">Календарь</a>
+          <a href="#program">Программа</a>
           <a href="#logistics">Логистика</a>
           <a href="#activities">Активности</a>
           <a href="https://mymeet.ai" target="_blank" rel="noopener noreferrer">Сайт</a>
@@ -55,16 +55,17 @@
                 <span>Командная неделя в Москве</span>
               </div>
               <h1 id="heroTitle">Mymeet Moscow Offsite 2026</h1>
-              <p class="hero__lead">Собираемся с 29 июня по 5 июля: работаем в SOK на Земляном Валу, живем рядом с Красными Воротами и двигаем программу прямо в общем календаре.</p>
+              <p class="hero__lead">Собираемся с 29 июня по 5 июля: работаем вместе неделю в SOK на Земляном Валу, живем рядом с Красными Воротами и кайфуем по вечерам.</p>
               <div class="hero__actions">
                 <button class="button button--primary" type="button" id="editButton">Внести изменения</button>
-                <a class="button" href="#calendar">Открыть календарь</a>
+                <a class="button" href="#program">Открыть программу</a>
               </div>
               <div class="pill-row" aria-label="Краткая сводка">
                 <span class="pill">29 июня - 5 июля</span>
+                <span class="pill">Заезд 28 июня</span>
                 <span class="pill">Москва</span>
                 <span class="pill">SOK 306-307</span>
-                <span class="pill">7 дней</span>
+                <span class="pill">Вечера до субботы</span>
               </div>
             </div>
 
@@ -94,27 +95,26 @@
         </div>
       </section>
 
-      <section class="section" id="calendar" aria-labelledby="calendarTitle">
+      <section class="section" id="program" aria-labelledby="programTitle">
         <div class="container">
           <div class="section__head">
             <div>
               <div class="section__label">Главный экран</div>
-              <h2 id="calendarTitle">Календарь недели</h2>
-              <p class="section__desc">Рабочие блоки, еда и вечерние активности с понедельника по воскресенье.</p>
+              <h2 id="programTitle">Программа недели</h2>
+              <p class="section__desc">Без тяжелой сетки: днем один рабочий блок, вечером понятная активность с понедельника по субботу.</p>
             </div>
             <div>
               <div class="status-line" id="statusLine" role="status" aria-live="polite"></div>
             </div>
           </div>
 
-          <div class="calendar-toolbar">
+          <div class="program-toolbar">
             <div class="legend" aria-label="Легенда календаря">
-              <span class="legend__item"><span class="legend__dot legend__dot--food"></span>Еда</span>
+              <span class="legend__item"><span class="legend__dot legend__dot--travel"></span>Заезд</span>
               <span class="legend__item"><span class="legend__dot legend__dot--work"></span>Работа</span>
               <span class="legend__item"><span class="legend__dot legend__dot--creative"></span>Креатив</span>
               <span class="legend__item"><span class="legend__dot legend__dot--sport"></span>Спорт</span>
               <span class="legend__item"><span class="legend__dot legend__dot--social"></span>Команда</span>
-              <span class="legend__item"><span class="legend__dot legend__dot--travel"></span>Логистика</span>
             </div>
             <div class="hero__actions">
               <button class="button button--primary" type="button" id="saveButton" hidden>Сохранить</button>
@@ -125,7 +125,7 @@
           <div class="editor-panel" aria-label="Редактор события">
             <div class="editor-panel__grid">
               <div class="field">
-                <label for="eventSelect">Событие</label>
+                <label for="eventSelect">Блок</label>
                 <select id="eventSelect"></select>
               </div>
               <div class="field">
@@ -140,12 +140,16 @@
                 <label for="durationSelect">Длительность</label>
                 <select id="durationSelect"></select>
               </div>
-              <a class="button" href="#calendar">К календарю</a>
+              <div class="field">
+                <label for="categorySelect">Тип</label>
+                <select id="categorySelect"></select>
+              </div>
+              <a class="button" href="#program">К программе</a>
             </div>
           </div>
 
-          <div class="calendar-frame">
-            <div class="calendar-grid" id="calendarGrid" aria-live="polite"></div>
+          <div class="program-board">
+            <div class="program-grid" id="programGrid" aria-live="polite"></div>
           </div>
         </div>
       </section>

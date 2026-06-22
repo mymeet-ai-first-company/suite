@@ -1,29 +1,30 @@
 (() => {
   const API_EVENTS = "/api/offsite26/events";
   const API_RESET = "/api/offsite26/reset";
-  const DAY_START = 480;
-  const DAY_END = 1440;
-  const HOUR_HEIGHT = 64;
-  const PX_PER_MINUTE = HOUR_HEIGHT / 60;
 
   const DAYS = [
-    { id: "2026-06-29", weekday: "Понедельник", date: "29 июня" },
-    { id: "2026-06-30", weekday: "Вторник", date: "30 июня" },
-    { id: "2026-07-01", weekday: "Среда", date: "1 июля" },
-    { id: "2026-07-02", weekday: "Четверг", date: "2 июля" },
-    { id: "2026-07-03", weekday: "Пятница", date: "3 июля" },
-    { id: "2026-07-04", weekday: "Суббота", date: "4 июля" },
-    { id: "2026-07-05", weekday: "Воскресенье", date: "5 июля" }
+    { id: "2026-06-28", weekday: "Воскресенье", date: "28 июня", tone: "arrival" },
+    { id: "2026-06-29", weekday: "Понедельник", date: "29 июня", tone: "work" },
+    { id: "2026-06-30", weekday: "Вторник", date: "30 июня", tone: "work" },
+    { id: "2026-07-01", weekday: "Среда", date: "1 июля", tone: "work" },
+    { id: "2026-07-02", weekday: "Четверг", date: "2 июля", tone: "work" },
+    { id: "2026-07-03", weekday: "Пятница", date: "3 июля", tone: "social" },
+    { id: "2026-07-04", weekday: "Суббота", date: "4 июля", tone: "sport" },
+    { id: "2026-07-05", weekday: "Воскресенье", date: "5 июля", tone: "wrap" }
   ];
 
   const CATEGORY_LABELS = {
-    food: "Еда",
     work: "Работа",
-    travel: "Логистика",
+    travel: "Заезд",
     creative: "Креатив",
     sport: "Спорт",
-    social: "Команда"
+    social: "Команда",
+    food: "Еда"
   };
+
+  const CATEGORY_OPTIONS = ["work", "travel", "creative", "sport", "social"];
+  const DAY_START = 540;
+  const DAY_END = 1440;
 
   const LOCATIONS = [
     {
@@ -53,34 +54,19 @@
 
   const ACTIVITY_IDEAS = [
     {
-      tag: "Суббота",
-      title: "Ночной велофестиваль",
-      text: "Сгонять 4 июля, а после заехать в бар. Велики в аренду или просто покататься."
+      tag: "Вечер",
+      title: "Вечера с планом",
+      text: "Не расписываем завтраки и обеды. Днем работаем вместе, вечером делаем одну активность с понедельника по субботу."
     },
     {
       tag: "Креатив",
-      title: "Командный подкаст",
-      text: "Позвать команду в студию на 10 человек и записать выпуск про внутрянку."
+      title: "Подкаст и рилсы",
+      text: "Записать выпуск про внутрянку и снять контент пачкой по сценариям."
     },
     {
       tag: "Спорт",
-      title: "Падел",
-      text: "Арендовать корты и сыграть командами."
-    },
-    {
-      tag: "Работа",
-      title: "Фулл vibe-code хакатон",
-      text: "За день нагенерить идеи, разбиться на команды и собрать прототипы."
-    },
-    {
-      tag: "Контент",
-      title: "Рилс-день",
-      text: "Сценарии и референсы от Андрюхи, съемка пачкой."
-    },
-    {
-      tag: "Вечер",
-      title: "Боулинг и бильярд",
-      text: "Дорожка, стол и loser bracket по настроению."
+      title: "Падел и вело",
+      text: "Арендовать корты, а 4 июля сходить на ночной велофестиваль."
     },
     {
       tag: "SOK",
@@ -92,13 +78,11 @@
   const state = {
     events: [],
     selectedId: "",
-    editing: false,
-    dirty: false,
-    saving: false
+    editing: false
   };
 
   const nodes = {
-    calendar: document.getElementById("calendarGrid"),
+    program: document.getElementById("programGrid"),
     editButton: document.getElementById("editButton"),
     saveButton: document.getElementById("saveButton"),
     resetButton: document.getElementById("resetButton"),
@@ -107,6 +91,7 @@
     daySelect: document.getElementById("daySelect"),
     startSelect: document.getElementById("startSelect"),
     durationSelect: document.getElementById("durationSelect"),
+    categorySelect: document.getElementById("categorySelect"),
     logisticsGrid: document.getElementById("logisticsGrid"),
     activityGrid: document.getElementById("activityGrid")
   };
@@ -121,19 +106,15 @@
   }
 
   function icon(name) {
-    if (name === "plus") {
-      return '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z"></path></svg>';
-    }
-
-    if (name === "minus") {
-      return '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd"></path></svg>';
-    }
-
     if (name === "edit") {
       return '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m13.586 3.586 2.828 2.828-8.18 8.18a2 2 0 0 1-.878.511l-3.178.91a.75.75 0 0 1-.928-.928l.91-3.178a2 2 0 0 1 .512-.878l8.914-7.445Z"></path><path d="M15 2a2 2 0 0 1 1.414.586l1 1A2 2 0 0 1 17.414 6L16.5 6.914 13.672 4.086 14.586 3.172A2 2 0 0 1 15 2Z"></path></svg>';
     }
 
-    return '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"></path></svg>';
+    if (name === "check") {
+      return '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"></path></svg>';
+    }
+
+    return '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path></svg>';
   }
 
   function minutesToTime(minutes) {
@@ -147,6 +128,17 @@
     return Math.min(DAY_END, event.start + event.duration);
   }
 
+  function dayTitle(dayId) {
+    const day = DAYS.find((item) => item.id === dayId);
+    return day ? `${day.weekday}, ${day.date}` : dayId;
+  }
+
+  function slotLabel(count) {
+    if (count === 1) return "1 слот";
+    if (count > 1 && count < 5) return `${count} слота`;
+    return `${count} слотов`;
+  }
+
   function groupEventsByDay(events) {
     return DAYS.reduce((groups, day) => {
       groups[day.id] = events
@@ -156,34 +148,12 @@
     }, {});
   }
 
-  function moveEvent(events, eventId, targetDay) {
-    return events.map((event) => (
-      event.id === eventId ? { ...event, day: targetDay } : event
-    ));
-  }
-
-  function resizeEvent(events, eventId, deltaMinutes) {
-    return events.map((event) => {
-      if (event.id !== eventId) return event;
-      const duration = Math.min(480, Math.max(15, event.duration + deltaMinutes));
-      return { ...event, duration: Math.min(duration, DAY_END - event.start) };
-    });
-  }
-
   function updateEvent(events, eventId, patch) {
     return events.map((event) => {
       if (event.id !== eventId) return event;
       const next = { ...event, ...patch };
-      return {
-        ...next,
-        duration: Math.min(next.duration, DAY_END - next.start)
-      };
+      return { ...next, duration: Math.min(next.duration, DAY_END - next.start) };
     });
-  }
-
-  function markDirty() {
-    state.dirty = true;
-    setStatus("Есть несохраненные изменения");
   }
 
   function setStatus(message, mode = "") {
@@ -221,7 +191,7 @@
     nodes.eventSelect.innerHTML = state.events
       .slice()
       .sort((a, b) => a.day.localeCompare(b.day) || a.start - b.start)
-      .map((event) => `<option value="${escapeHtml(event.id)}">${escapeHtml(event.title)}</option>`)
+      .map((event) => `<option value="${escapeHtml(event.id)}">${escapeHtml(dayTitle(event.day))} · ${escapeHtml(event.title)}</option>`)
       .join("");
 
     nodes.daySelect.innerHTML = DAYS.map((day) => (
@@ -234,9 +204,13 @@
     }
     nodes.startSelect.innerHTML = startOptions.join("");
 
-    nodes.durationSelect.innerHTML = [30, 45, 60, 90, 120, 150, 180, 210, 240, 300, 360, 480]
+    nodes.durationSelect.innerHTML = [60, 90, 120, 150, 180, 210, 240, 300, 360, 390, 480, 510]
       .map((value) => `<option value="${value}">${value} мин</option>`)
       .join("");
+
+    nodes.categorySelect.innerHTML = CATEGORY_OPTIONS.map((category) => (
+      `<option value="${category}">${CATEGORY_LABELS[category]}</option>`
+    )).join("");
 
     if (!state.selectedId && state.events[0]) {
       state.selectedId = state.events[0].id;
@@ -253,118 +227,68 @@
     nodes.daySelect.value = selected.day;
     nodes.startSelect.value = String(selected.start);
     nodes.durationSelect.value = String(selected.duration);
+    nodes.categorySelect.value = selected.category;
   }
 
-  function eventStyle(event) {
-    const top = Math.max(0, (event.start - DAY_START) * PX_PER_MINUTE + 4);
-    const height = Math.max(48, event.duration * PX_PER_MINUTE - 8);
-    return `top:${top}px;height:${height}px;`;
-  }
-
-  function renderEvent(event) {
+  function renderProgramBlock(event) {
     const isSelected = event.id === state.selectedId ? " is-selected" : "";
-    const draggable = state.editing ? ' draggable="true"' : "";
     return `
       <article
-        class="event-card event-card--${escapeHtml(event.category)}${isSelected}"
-        style="${eventStyle(event)}"
-        data-event-id="${escapeHtml(event.id)}"${draggable}
+        class="program-event program-event--${escapeHtml(event.category)}${isSelected}"
+        data-event-id="${escapeHtml(event.id)}"
         tabindex="0"
         aria-label="${escapeHtml(`${event.title}, ${minutesToTime(event.start)}-${minutesToTime(eventEnd(event))}`)}"
       >
-        <div class="event-card__time">${minutesToTime(event.start)}-${minutesToTime(eventEnd(event))}</div>
-        <div class="event-card__title">${escapeHtml(event.title)}</div>
-        <div class="event-card__meta">${escapeHtml(event.location || CATEGORY_LABELS[event.category])}</div>
-        <div class="event-card__actions" aria-label="Изменить длительность">
-          <button class="button button--icon" type="button" data-resize="-30" aria-label="Уменьшить на 30 минут">${icon("minus")}</button>
-          <button class="button button--icon" type="button" data-resize="30" aria-label="Увеличить на 30 минут">${icon("plus")}</button>
+        <div class="program-event__top">
+          <span>${minutesToTime(event.start)}-${minutesToTime(eventEnd(event))}</span>
+          <span>${escapeHtml(CATEGORY_LABELS[event.category] || event.category)}</span>
         </div>
+        <h3>${escapeHtml(event.title)}</h3>
+        <p>${escapeHtml(event.description)}</p>
+        <div class="program-event__place">${escapeHtml(event.location || "")}</div>
+        ${event.link ? `<a href="${escapeHtml(event.link)}" target="_blank" rel="noopener noreferrer">Открыть ссылку</a>` : ""}
       </article>
     `;
   }
 
-  function renderCalendar() {
+  function renderProgram() {
     const grouped = groupEventsByDay(state.events);
-    const hourTicks = [];
-    for (let minutes = DAY_START; minutes < DAY_END; minutes += 60) {
-      hourTicks.push(`<div class="time-axis__tick">${minutesToTime(minutes)}</div>`);
-    }
 
-    nodes.calendar.innerHTML = `
-      <div class="time-head"></div>
-      ${DAYS.map((day) => `
-        <div class="day-head">
-          <div class="day-head__name">${escapeHtml(day.weekday)}</div>
-          <div class="day-head__date">${escapeHtml(day.date)}</div>
-        </div>
-      `).join("")}
-      <div class="time-axis">${hourTicks.join("")}</div>
-      ${DAYS.map((day) => `
-        <div class="day-lane" data-day="${day.id}" aria-label="${escapeHtml(`${day.weekday}, ${day.date}`)}">
-          ${(grouped[day.id] || []).map(renderEvent).join("")}
-        </div>
-      `).join("")}
-    `;
+    nodes.program.innerHTML = DAYS.map((day) => {
+      const events = grouped[day.id] || [];
+      return `
+        <section class="day-tile day-tile--${escapeHtml(day.tone)}" data-day="${day.id}">
+          <div class="day-tile__head">
+            <div>
+              <div class="day-tile__weekday">${escapeHtml(day.weekday)}</div>
+              <div class="day-tile__date">${escapeHtml(day.date)}</div>
+            </div>
+            <span class="day-tile__count">${slotLabel(events.length)}</span>
+          </div>
+          <div class="day-tile__body">
+            ${events.map(renderProgramBlock).join("") || '<div class="day-tile__empty">Пока пусто</div>'}
+          </div>
+        </section>
+      `;
+    }).join("");
 
-    attachCalendarEvents();
+    attachProgramEvents();
     renderControls();
   }
 
   function selectEvent(eventId) {
     state.selectedId = eventId;
-    renderCalendar();
+    renderProgram();
   }
 
-  function attachCalendarEvents() {
-    document.querySelectorAll(".event-card").forEach((card) => {
+  function attachProgramEvents() {
+    document.querySelectorAll(".program-event").forEach((card) => {
       card.addEventListener("click", () => selectEvent(card.dataset.eventId));
       card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
           selectEvent(card.dataset.eventId);
         }
-      });
-
-      card.addEventListener("dragstart", (event) => {
-        if (!state.editing) return;
-        event.dataTransfer.effectAllowed = "move";
-        event.dataTransfer.setData("text/plain", card.dataset.eventId);
-      });
-
-      card.querySelectorAll("[data-resize]").forEach((button) => {
-        button.addEventListener("click", (event) => {
-          event.stopPropagation();
-          state.events = resizeEvent(state.events, card.dataset.eventId, Number(button.dataset.resize));
-          state.selectedId = card.dataset.eventId;
-          markDirty();
-          renderCalendar();
-        });
-      });
-    });
-
-    document.querySelectorAll(".day-lane").forEach((lane) => {
-      lane.addEventListener("dragover", (event) => {
-        if (!state.editing) return;
-        // Native drop only fires when the target cancels dragover.
-        event.preventDefault();
-        lane.classList.add("is-drop-target");
-      });
-
-      lane.addEventListener("dragleave", () => {
-        lane.classList.remove("is-drop-target");
-      });
-
-      lane.addEventListener("drop", (event) => {
-        if (!state.editing) return;
-        event.preventDefault();
-        lane.classList.remove("is-drop-target");
-        const eventId = event.dataTransfer.getData("text/plain");
-        if (!eventId) return;
-
-        state.events = moveEvent(state.events, eventId, lane.dataset.day);
-        state.selectedId = eventId;
-        markDirty();
-        renderCalendar();
       });
     });
   }
@@ -375,10 +299,11 @@
     state.events = updateEvent(state.events, eventId, {
       day: nodes.daySelect.value,
       start: Number(nodes.startSelect.value),
-      duration: Number(nodes.durationSelect.value)
+      duration: Number(nodes.durationSelect.value),
+      category: nodes.categorySelect.value
     });
-    markDirty();
-    renderCalendar();
+    setStatus("Есть несохраненные изменения");
+    renderProgram();
   }
 
   function setEditing(enabled) {
@@ -387,25 +312,24 @@
     nodes.editButton.innerHTML = enabled ? `${icon("check")} Готово` : `${icon("edit")} Внести изменения`;
     nodes.saveButton.hidden = !enabled;
     nodes.resetButton.hidden = !enabled;
-    renderCalendar();
+    document.querySelector(".editor-panel").hidden = !enabled;
+    renderProgram();
   }
 
   async function loadSchedule() {
-    setStatus("Загружаем расписание");
+    setStatus("Загружаем программу");
     const response = await fetch(API_EVENTS);
     if (!response.ok) {
-      throw new Error("Не удалось загрузить расписание");
+      throw new Error("Не удалось загрузить программу");
     }
     const payload = await response.json();
     state.events = payload.events || [];
     state.selectedId = state.events[0] ? state.events[0].id : "";
-    state.dirty = false;
     setStatus(payload.updatedAt ? `Обновлено: ${new Date(payload.updatedAt).toLocaleString("ru-RU")}` : "");
-    renderCalendar();
+    renderProgram();
   }
 
   async function saveSchedule() {
-    state.saving = true;
     nodes.saveButton.disabled = true;
     setStatus("Сохраняем");
 
@@ -423,30 +347,27 @@
 
       const payload = await response.json();
       state.events = payload.events || state.events;
-      state.dirty = false;
       setStatus(`Сохранено: ${new Date(payload.updatedAt).toLocaleString("ru-RU")}`, "success");
-      renderCalendar();
+      renderProgram();
     } catch (error) {
       setStatus(error.message, "error");
     } finally {
-      state.saving = false;
       nodes.saveButton.disabled = false;
     }
   }
 
   async function resetSchedule() {
     nodes.resetButton.disabled = true;
-    setStatus("Возвращаем дефолтное расписание");
+    setStatus("Возвращаем дефолтную программу");
 
     try {
       const response = await fetch(API_RESET, { method: "POST" });
-      if (!response.ok) throw new Error("Не удалось сбросить расписание");
+      if (!response.ok) throw new Error("Не удалось сбросить программу");
       const payload = await response.json();
       state.events = payload.events || [];
       state.selectedId = state.events[0] ? state.events[0].id : "";
-      state.dirty = false;
-      setStatus("Дефолтное расписание восстановлено", "success");
-      renderCalendar();
+      setStatus("Дефолтная программа восстановлена", "success");
+      renderProgram();
     } catch (error) {
       setStatus(error.message, "error");
     } finally {
@@ -462,6 +383,7 @@
     nodes.daySelect.addEventListener("change", applySelectedControls);
     nodes.startSelect.addEventListener("change", applySelectedControls);
     nodes.durationSelect.addEventListener("change", applySelectedControls);
+    nodes.categorySelect.addEventListener("change", applySelectedControls);
   }
 
   function init() {
