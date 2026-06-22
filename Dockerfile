@@ -1,6 +1,10 @@
-FROM nginx:alpine
+FROM node:22-alpine
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY . /usr/share/nginx/html
+WORKDIR /app
+ENV PORT=80
+
+COPY . .
 
 EXPOSE 80
+
+CMD ["node", "server.js"]

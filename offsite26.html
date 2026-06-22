@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Mymeet Moscow Offsite 2026</title>
+  <meta name="description" content="Публичная страница московского offsite Mymeet.ai: проживание, коворкинг SOK, программа недели и редактируемый календарь событий.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://suite.mymeet.ai/offsite26">
+
+  <meta property="og:title" content="Mymeet Moscow Offsite 2026">
+  <meta property="og:description" content="Командная неделя в Москве с 29 июня по 5 июля: SOK, гостиница, рабочие слоты и вечерние активности.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://suite.mymeet.ai/offsite26">
+  <meta property="og:image" content="https://suite.mymeet.ai/images/offsite26/sok-zemlyanoy-val.jpg">
+  <meta property="og:locale" content="ru_RU">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mymeet Moscow Offsite 2026">
+  <meta name="twitter:description" content="Календарь командной недели Mymeet.ai в Москве.">
+  <meta name="twitter:image" content="https://suite.mymeet.ai/images/offsite26/sok-zemlyanoy-val.jpg">
+
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/offsite26.css">
+  <script src="scripts/offsite26.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="brand" href="/" aria-label="Mymeet.ai">
+          <span class="brand__mark" aria-hidden="true">M</span>
+          <span>mymeet.ai</span>
+        </a>
+        <nav class="topbar__nav" aria-label="Навигация">
+          <a href="#calendar">Календарь</a>
+          <a href="#logistics">Логистика</a>
+          <a href="#activities">Активности</a>
+          <a href="https://mymeet.ai" target="_blank" rel="noopener noreferrer">Сайт</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="container">
+          <div class="hero__grid">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow__dot" aria-hidden="true"></span>
+                <span>Командная неделя в Москве</span>
+              </div>
+              <h1 id="heroTitle">Mymeet Moscow Offsite 2026</h1>
+              <p class="hero__lead">Собираемся с 29 июня по 5 июля: работаем в SOK на Земляном Валу, живем рядом с Красными Воротами и двигаем программу прямо в общем календаре.</p>
+              <div class="hero__actions">
+                <button class="button button--primary" type="button" id="editButton">Внести изменения</button>
+                <a class="button" href="#calendar">Открыть календарь</a>
+              </div>
+              <div class="pill-row" aria-label="Краткая сводка">
+                <span class="pill">29 июня - 5 июля</span>
+                <span class="pill">Москва</span>
+                <span class="pill">SOK 306-307</span>
+                <span class="pill">7 дней</span>
+              </div>
+            </div>
+
+            <div class="media-stack" aria-label="Площадки">
+              <article class="media-card">
+                <img src="images/offsite26/sok-zemlyanoy-val.jpg" alt="Интерьер SOK Земляной Вал">
+                <div class="media-card__body">
+                  <div>
+                    <p class="media-card__title">SOK Земляной Вал</p>
+                    <p class="media-card__meta">Москва, Земляной Вал, 8</p>
+                  </div>
+                  <a href="https://sok.works/locations/sok-zemlyanoy-val/" target="_blank" rel="noopener noreferrer">Источник</a>
+                </div>
+              </article>
+              <article class="media-card">
+                <img src="images/offsite26/red-gate-hotel.webp" alt="Гостиница у Красных Ворот">
+                <div class="media-card__body">
+                  <div>
+                    <p class="media-card__title">Гостиница у Красных Ворот</p>
+                    <p class="media-card__meta">Хомутовский тупик 5-7 с.13</p>
+                  </div>
+                  <a href="https://гостиницаукрасныхворот.рф" target="_blank" rel="noopener noreferrer">Источник</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="calendar" aria-labelledby="calendarTitle">
+        <div class="container">
+          <div class="section__head">
+            <div>
+              <div class="section__label">Главный экран</div>
+              <h2 id="calendarTitle">Календарь недели</h2>
+              <p class="section__desc">Рабочие блоки, еда и вечерние активности с понедельника по воскресенье.</p>
+            </div>
+            <div>
+              <div class="status-line" id="statusLine" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="calendar-toolbar">
+            <div class="legend" aria-label="Легенда календаря">
+              <span class="legend__item"><span class="legend__dot legend__dot--food"></span>Еда</span>
+              <span class="legend__item"><span class="legend__dot legend__dot--work"></span>Работа</span>
+              <span class="legend__item"><span class="legend__dot legend__dot--creative"></span>Креатив</span>
+              <span class="legend__item"><span class="legend__dot legend__dot--sport"></span>Спорт</span>
+              <span class="legend__item"><span class="legend__dot legend__dot--social"></span>Команда</span>
+              <span class="legend__item"><span class="legend__dot legend__dot--travel"></span>Логистика</span>
+            </div>
+            <div class="hero__actions">
+              <button class="button button--primary" type="button" id="saveButton" hidden>Сохранить</button>
+              <button class="button button--danger" type="button" id="resetButton" hidden>Сбросить</button>
+            </div>
+          </div>
+
+          <div class="editor-panel" aria-label="Редактор события">
+            <div class="editor-panel__grid">
+              <div class="field">
+                <label for="eventSelect">Событие</label>
+                <select id="eventSelect"></select>
+              </div>
+              <div class="field">
+                <label for="daySelect">День</label>
+                <select id="daySelect"></select>
+              </div>
+              <div class="field">
+                <label for="startSelect">Старт</label>
+                <select id="startSelect"></select>
+              </div>
+              <div class="field">
+                <label for="durationSelect">Длительность</label>
+                <select id="durationSelect"></select>
+              </div>
+              <a class="button" href="#calendar">К календарю</a>
+            </div>
+          </div>
+
+          <div class="calendar-frame">
+            <div class="calendar-grid" id="calendarGrid" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--subtle" id="logistics" aria-labelledby="logisticsTitle">
+        <div class="container">
+          <div class="section__head">
+            <div>
+              <div class="section__label">База недели</div>
+              <h2 id="logisticsTitle">Где живем и работаем</h2>
+              <p class="section__desc">Ссылки на площадки, карты и ключевые точки недели.</p>
+            </div>
+          </div>
+          <div class="logistics-grid" id="logisticsGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="activities" aria-labelledby="activitiesTitle">
+        <div class="container">
+          <div class="section__head">
+            <div>
+              <div class="section__label">Пул идей</div>
+              <h2 id="activitiesTitle">Активности</h2>
+              <p class="section__desc">Все идеи из черновика собраны на странице и часть уже стоит в календаре.</p>
+            </div>
+          </div>
+          <div class="activity-grid" id="activityGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>Mymeet.ai Offsite 2026</span>
+        <span>Обновляемая публичная программа недели</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

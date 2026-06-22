@@ -1,0 +1,346 @@
+{
+  "updatedAt": "2026-06-19T00:00:00.000Z",
+  "events": [
+    {
+      "id": "mon-breakfast",
+      "title": "Завтрак",
+      "day": "2026-06-29",
+      "start": 540,
+      "duration": 60,
+      "category": "food",
+      "location": "Гостиница / рядом",
+      "description": "Собраться, синхронизироваться по приезду."
+    },
+    {
+      "id": "mon-arrival",
+      "title": "Заезд и логистика",
+      "day": "2026-06-29",
+      "start": 630,
+      "duration": 60,
+      "category": "travel",
+      "location": "Гостиница у Красных Ворот",
+      "description": "Разобраться с проживанием, ключами и маршрутом до SOK."
+    },
+    {
+      "id": "mon-work-1",
+      "title": "Оффсайт: старт недели",
+      "day": "2026-06-29",
+      "start": 720,
+      "duration": 120,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Цели недели, правила работы, быстрый статус по продуктам."
+    },
+    {
+      "id": "mon-lunch",
+      "title": "Обед",
+      "day": "2026-06-29",
+      "start": 840,
+      "duration": 60,
+      "category": "food",
+      "location": "Курская / Земляной Вал",
+      "description": "Пауза между рабочими блоками."
+    },
+    {
+      "id": "mon-work-2",
+      "title": "Рабочий слот",
+      "day": "2026-06-29",
+      "start": 900,
+      "duration": 180,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Продуктовые и операционные задачи."
+    },
+    {
+      "id": "mon-dinner",
+      "title": "Командный ужин",
+      "day": "2026-06-29",
+      "start": 1170,
+      "duration": 120,
+      "category": "social",
+      "location": "Москва",
+      "description": "Первый вечер вместе, без плотной повестки."
+    },
+    {
+      "id": "tue-breakfast",
+      "title": "Завтрак",
+      "day": "2026-06-30",
+      "start": 540,
+      "duration": 60,
+      "category": "food",
+      "location": "Гостиница / рядом",
+      "description": "Старт дня."
+    },
+    {
+      "id": "tue-work-1",
+      "title": "Рабочий слот",
+      "day": "2026-06-30",
+      "start": 600,
+      "duration": 180,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Фокусная работа по командам."
+    },
+    {
+      "id": "tue-lunch",
+      "title": "Обед",
+      "day": "2026-06-30",
+      "start": 780,
+      "duration": 60,
+      "category": "food",
+      "location": "Курская / Земляной Вал",
+      "description": "Пауза."
+    },
+    {
+      "id": "tue-work-2",
+      "title": "Рабочий слот",
+      "day": "2026-06-30",
+      "start": 840,
+      "duration": 210,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Демо, разбор блокеров, решения."
+    },
+    {
+      "id": "tue-podcast",
+      "title": "Командный подкаст",
+      "day": "2026-06-30",
+      "start": 1110,
+      "duration": 120,
+      "category": "creative",
+      "location": "Студия на 10 человек",
+      "description": "Записать внутренний выпуск про командную кухню."
+    },
+    {
+      "id": "wed-breakfast",
+      "title": "Завтрак",
+      "day": "2026-07-01",
+      "start": 540,
+      "duration": 60,
+      "category": "food",
+      "location": "Гостиница / рядом",
+      "description": "Старт дня."
+    },
+    {
+      "id": "wed-work-1",
+      "title": "Рабочий слот",
+      "day": "2026-07-01",
+      "start": 600,
+      "duration": 180,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Фокусная работа."
+    },
+    {
+      "id": "wed-lunch",
+      "title": "Обед",
+      "day": "2026-07-01",
+      "start": 780,
+      "duration": 60,
+      "category": "food",
+      "location": "Курская / Земляной Вал",
+      "description": "Пауза."
+    },
+    {
+      "id": "wed-work-2",
+      "title": "Рабочий слот",
+      "day": "2026-07-01",
+      "start": 840,
+      "duration": 210,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Ревью прогресса и доработка."
+    },
+    {
+      "id": "wed-padel",
+      "title": "Падел",
+      "day": "2026-07-01",
+      "start": 1110,
+      "duration": 120,
+      "category": "sport",
+      "location": "Корты",
+      "description": "Арендовать корты и сыграть командами."
+    },
+    {
+      "id": "thu-breakfast",
+      "title": "Завтрак",
+      "day": "2026-07-02",
+      "start": 540,
+      "duration": 60,
+      "category": "food",
+      "location": "Гостиница / рядом",
+      "description": "Старт дня."
+    },
+    {
+      "id": "thu-reels",
+      "title": "Рилс-день",
+      "day": "2026-07-02",
+      "start": 600,
+      "duration": 180,
+      "category": "creative",
+      "location": "SOK 306-307",
+      "description": "Сценарии и референсы от Андрюхи, съемка пачкой."
+    },
+    {
+      "id": "thu-lunch",
+      "title": "Обед",
+      "day": "2026-07-02",
+      "start": 780,
+      "duration": 60,
+      "category": "food",
+      "location": "Курская / Земляной Вал",
+      "description": "Пауза."
+    },
+    {
+      "id": "thu-work",
+      "title": "Рабочий слот",
+      "day": "2026-07-02",
+      "start": 840,
+      "duration": 240,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Рабочий блок после съемок."
+    },
+    {
+      "id": "thu-evening",
+      "title": "Свободный вечер",
+      "day": "2026-07-02",
+      "start": 1140,
+      "duration": 120,
+      "category": "social",
+      "location": "Москва",
+      "description": "Оставить место для спонтанного плана."
+    },
+    {
+      "id": "fri-breakfast",
+      "title": "Завтрак",
+      "day": "2026-07-03",
+      "start": 540,
+      "duration": 60,
+      "category": "food",
+      "location": "Гостиница / рядом",
+      "description": "Старт дня."
+    },
+    {
+      "id": "fri-work",
+      "title": "Рабочий слот",
+      "day": "2026-07-03",
+      "start": 600,
+      "duration": 180,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Закрыть рабочую неделю."
+    },
+    {
+      "id": "fri-lunch",
+      "title": "Обед",
+      "day": "2026-07-03",
+      "start": 780,
+      "duration": 60,
+      "category": "food",
+      "location": "Курская / Земляной Вал",
+      "description": "Пауза."
+    },
+    {
+      "id": "fri-hack-prep",
+      "title": "Идеи для хакатона",
+      "day": "2026-07-03",
+      "start": 960,
+      "duration": 90,
+      "category": "creative",
+      "location": "SOK 306-307",
+      "description": "Нагенерить идеи и разбиться на команды."
+    },
+    {
+      "id": "fri-party",
+      "title": "Вечеринка в коворкинге",
+      "day": "2026-07-03",
+      "start": 1140,
+      "duration": 180,
+      "category": "social",
+      "location": "SOK 306-307",
+      "description": "Пиво, снеки, проектор, матч ЧМ и/или F1."
+    },
+    {
+      "id": "sat-brunch",
+      "title": "Поздний завтрак",
+      "day": "2026-07-04",
+      "start": 600,
+      "duration": 60,
+      "category": "food",
+      "location": "Гостиница / рядом",
+      "description": "Не начинать субботу слишком рано."
+    },
+    {
+      "id": "sat-hackathon",
+      "title": "Фулл vibe-code хакатон",
+      "day": "2026-07-04",
+      "start": 660,
+      "duration": 360,
+      "category": "work",
+      "location": "SOK 306-307",
+      "description": "Один день, команды, быстрые прототипы, демо к вечеру."
+    },
+    {
+      "id": "sat-dinner",
+      "title": "Ужин перед вело",
+      "day": "2026-07-04",
+      "start": 1080,
+      "duration": 60,
+      "category": "food",
+      "location": "Москва",
+      "description": "Перед ночным велофестивалем."
+    },
+    {
+      "id": "sat-ride",
+      "title": "Ночной велофестиваль",
+      "day": "2026-07-04",
+      "start": 1260,
+      "duration": 120,
+      "category": "sport",
+      "location": "Крылатская улица",
+      "description": "Слоты старта 21:00 или 22:00. Велики в аренду или просто покататься.",
+      "link": "https://mosvelofest.mos.ru/events/04jul2026/about/"
+    },
+    {
+      "id": "sat-bar",
+      "title": "Бар после вело",
+      "day": "2026-07-04",
+      "start": 1380,
+      "duration": 60,
+      "category": "social",
+      "location": "Москва",
+      "description": "Финишировать день спокойно и без повестки."
+    },
+    {
+      "id": "sun-brunch",
+      "title": "Бранч",
+      "day": "2026-07-05",
+      "start": 660,
+      "duration": 90,
+      "category": "food",
+      "location": "Москва",
+      "description": "Медленный старт воскресенья."
+    },
+    {
+      "id": "sun-bowling",
+      "title": "Боулинг и бильярд",
+      "day": "2026-07-05",
+      "start": 780,
+      "duration": 180,
+      "category": "sport",
+      "location": "Локация TBD",
+      "description": "Дорожка, стол, loser bracket по настроению."
+    },
+    {
+      "id": "sun-wrap",
+      "title": "Закрытие недели",
+      "day": "2026-07-05",
+      "start": 1020,
+      "duration": 120,
+      "category": "social",
+      "location": "Гостиница / город",
+      "description": "Итоги, разъезды, последние договоренности."
+    }
+  ]
+}
