@@ -153,6 +153,19 @@
       min-width: 184px;
       box-shadow: 0 0 5px rgba(33,40,51,.20);
     }
+
+    .download-actions {
+      gap: 8px;
+    }
+
+    .button.download-cta {
+      min-height: 44px;
+      padding: 0 18px;
+      font-size: 15px;
+      letter-spacing: -0.15px;
+      box-shadow: 0 0 5px rgba(33,40,51,.20);
+    }
+
     .button.dark { color: #FFFFFF; background: var(--ink); }
     .button.dark:hover { background: #121821; }
     .button.outline { border-color: var(--border); background: transparent; }
@@ -323,7 +336,7 @@
       letter-spacing: -0.32px;
     }
 
-    .notification span,
+    .notification span:not(.mini-button),
     .panel-row span {
       display: block;
       margin-top: 4px;
@@ -335,12 +348,15 @@
     .mini-button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      height: 32px;
       min-height: 32px;
       padding: 0 10px;
       border-radius: var(--radius);
       color: #FFFFFF;
       background: var(--brand-blue);
       font-size: 12px;
+      line-height: 1;
       font-weight: 500;
       white-space: nowrap;
     }
@@ -447,33 +463,44 @@
       padding: 24px;
     }
 
-    .windows-strip {
+    .permission-list {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 24px;
+      gap: 12px;
       margin-top: 24px;
-      padding: 20px 24px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
     }
 
-    .windows-strip strong {
+    .permission-item {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #FFFFFF;
+    }
+
+    .permission-item .icon-box {
+      width: 32px;
+      height: 32px;
+      background: var(--subtle);
+    }
+
+    .permission-item strong {
       display: block;
       margin-bottom: 4px;
       color: var(--text);
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.25;
       font-weight: 500;
-      letter-spacing: -0.36px;
+      letter-spacing: -0.32px;
     }
 
-    .windows-strip span {
+    .permission-item span {
       color: var(--text-tertiary);
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.35;
-      letter-spacing: -0.15px;
+      letter-spacing: -0.14px;
     }
 
     .download-list {
@@ -750,10 +777,9 @@
       .desktop-mockup { display: none; }
       .hero-actions .button,
       .download-card,
-      .windows-strip .button,
       .cta-inner .button { width: 100%; }
+      .download-actions { gap: 10px; }
       .download-card { grid-template-columns: 1fr; }
-      .windows-strip { grid-template-columns: 1fr; }
       .notification { grid-template-columns: 40px minmax(0, 1fr); }
       .notification .mini-button { grid-column: 1 / -1; justify-content: center; }
       section { padding: 64px 0; }
@@ -782,8 +808,10 @@
           <p class="lead">
             Mymeet.ai Desktop пишет системный звук и микрофон, сам видит звонок в Zoom, Teams или Meet и загружает запись в Mymeet.ai для транскрипта и саммари.
           </p>
-          <div class="hero-actions">
-            <a class="button light hero-cta" href="#install">Скачать Desktop</a>
+          <div class="hero-actions download-actions" aria-label="Скачать Desktop">
+            <a class="button light download-cta" href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.41/Mymeet.ai-0.1.41-arm64.dmg">Mac Silicon</a>
+            <a class="button light download-cta" href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.41/Mymeet.ai-0.1.41.dmg">Mac Intel</a>
+            <a class="button light download-cta" href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.40/Mymeet.ai.Setup.0.1.40.exe">Windows</a>
           </div>
           <p class="hero-note">На Mac после скачивания нужно один раз разрешить запуск в Privacy &amp; Security. Инструкция ниже.</p>
         </div>
@@ -830,57 +858,61 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="label">Установка Mac</div>
-            <h2>Скачайте DMG и разрешите запуск в Privacy &amp; Security</h2>
+            <div class="label">Mac: первый запуск</div>
+            <h2>Как пройти защитный экран Apple</h2>
           </div>
           <p class="section-copy">
-            На Mac это обязательный первый шаг: пока приложение не разрешено в macOS, Desktop не сможет запуститься и записать встречу.
+            Если macOS пишет, что не может проверить приложение, разрешите Mymeet.ai один раз в Privacy &amp; Security. Без этого Desktop не откроется.
           </p>
         </div>
 
         <div class="install-layout">
-          <article class="install-card">
-            <h3>1. Скачайте версию для вашего Mac</h3>
-            <p>Проверьте процессор: Apple menu → «Об этом Mac». Если в строке Chip указан Apple, выбирайте Apple Silicon.</p>
-            <div class="download-list">
-              <a class="download-card" href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.41/Mymeet.ai-0.1.41-arm64.dmg">
-                <span>
-                  <strong>Mac · Apple Silicon</strong>
-                  <span>M1 / M2 / M3 / M4 · v0.1.41</span>
-                </span>
-                <em>Скачать</em>
-              </a>
-              <a class="download-card" href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.41/Mymeet.ai-0.1.41.dmg">
-                <span>
-                  <strong>Mac · Intel</strong>
-                  <span>Intel Mac · v0.1.41</span>
-                </span>
-                <em>Скачать</em>
-              </a>
-            </div>
-            <p class="install-note">Откройте <code>.dmg</code>, перетащите Mymeet.ai в Applications и запустите приложение оттуда.</p>
-          </article>
-
-          <aside class="info-card highlight">
-            <h3>2. Разрешите запуск, если macOS блокирует приложение</h3>
-            <p>Если Apple пишет, что не может проверить приложение, разрешение нужно сделать один раз через Privacy &amp; Security.</p>
+          <article class="info-card highlight">
+            <h3>1. Разрешите запуск в Privacy &amp; Security</h3>
+            <p>Этот экран появляется после первой попытки открыть приложение из Applications.</p>
             <ol class="ordered-steps">
+              <li><span>Откройте <code>.dmg</code>, перетащите Mymeet.ai в <strong>Applications</strong> и запустите приложение оттуда.</span></li>
               <li><span>Попробуйте открыть Mymeet.ai из Applications. Если появится предупреждение, нажмите <strong>Done</strong>.</span></li>
               <li><span>Откройте <strong>System Settings → Privacy &amp; Security</strong> и пролистайте до блока Security.</span></li>
               <li><span>Нажмите <strong>Open Anyway</strong> рядом с Mymeet.ai. Apple показывает эту кнопку примерно час после первой попытки запуска.</span></li>
               <li><span>Подтвердите пароль или Touch ID, затем в новом диалоге нажмите <strong>Open</strong>.</span></li>
-              <li><span>После входа разрешите доступ к микрофону и системной записи аудио, когда macOS спросит.</span></li>
             </ol>
             <a class="source-link" href="https://support.apple.com/en-us/102445" target="_blank" rel="noopener noreferrer">Официальная инструкция Apple</a>
-          </aside>
-        </div>
+          </article>
 
-        <div class="windows-strip">
-          <div>
-            <strong>Windows</strong>
-            <span>Для Windows скачайте установщик отдельно. Если SmartScreen покажет Unknown publisher, выберите More info → Run anyway.</span>
-          </div>
-          <a class="button outline" href="https://github.com/mymeet-ai-first-company/mymeet-desktop-releases/releases/download/v0.1.40/Mymeet.ai.Setup.0.1.40.exe">Скачать Windows</a>
+          <aside class="install-card">
+            <h3>2. Дайте разрешения для записи</h3>
+            <p>После запуска macOS спросит доступы. Они нужны, чтобы Desktop записал обе стороны встречи.</p>
+            <div class="permission-list">
+              <div class="permission-item">
+                <div class="icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="M10 3a4 4 0 0 0-4 4v3a4 4 0 0 0 8 0V7a4 4 0 0 0-4-4Zm6 7a1 1 0 1 0-2 0 4 4 0 0 1-8 0 1 1 0 1 0-2 0 6 6 0 0 0 5 5.92V17H7.5a1 1 0 1 0 0 2h5a1 1 0 1 0 0-2H11v-1.08A6 6 0 0 0 16 10Z"/></svg>
+                </div>
+                <div>
+                  <strong>Microphone</strong>
+                  <span>Разрешите микрофон, чтобы в записи был ваш голос.</span>
+                </div>
+              </div>
+              <div class="permission-item">
+                <div class="icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="M4.75 6.25A2.25 2.25 0 0 1 7 4h6a2.25 2.25 0 0 1 2.25 2.25v4A2.25 2.25 0 0 1 13 12.5H7a2.25 2.25 0 0 1-2.25-2.25v-4ZM3 14.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75ZM6.25 16.5a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1-.75-.75Z"/></svg>
+                </div>
+                <div>
+                  <strong>System Audio</strong>
+                  <span>Разрешите запись системного звука, чтобы были слышны другие участники.</span>
+                </div>
+              </div>
+              <div class="permission-item">
+                <div class="icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="M10 3a7 7 0 0 0-6.32 4H2.75a.75.75 0 0 0-.53 1.28l2 2a.75.75 0 0 0 1.06 0l2-2A.75.75 0 0 0 6.75 7h-1.4A5.5 5.5 0 1 1 10 15.5a.75.75 0 0 0 0 1.5A7 7 0 0 0 10 3Z"/></svg>
+                </div>
+                <div>
+                  <strong>Restart Desktop</strong>
+                  <span>Если macOS попросит перезапуск приложения, закройте Desktop и откройте его снова.</span>
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
